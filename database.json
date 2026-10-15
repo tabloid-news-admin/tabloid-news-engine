@@ -650,5 +650,62 @@
       },
       "processed_at": "2026-10-15T17:32:36.925Z"
     }
+  ],
+  "local_articles": [
+    {
+      "is_newsworthy": true,
+      "pillar": "1 NEWS",
+      "entities_mentioned": [
+        "Luas Finglas",
+        "Glasnevin"
+      ],
+      "one_sentence_summary": "The Luas Finglas extension has been approved with funding, set to begin construction in Glasnevin next month, enhancing public transport in North Dublin.",
+      "justification": "This update directly impacts the local community by improving public transportation infrastructure, making it a significant development for residents in the area.",
+      "source_url": "https://reddit.com",
+      "reddit_id": "t3_1x6uwxk",
+      "reddit_title": "Luas Finglas Extension Approved",
+      "reddit_author": "/u/DublinModerator",
+      "posted_at": "2026-10-15T19:20:50.000Z",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "processed_at": "2026-10-15T19:47:28.279Z"
+    }
+  ],
+  "local_rejected": [
+    "https://www.reddit.com/r/Dublin/comments/1x6uwxk/in_dublin_ireland/",
+    "https://www.reddit.com/r/Dublin/comments/1x6ubgn/whats_on_in_dublin_this_weekend/",
+    "https://www.reddit.com/r/Dublin/comments/1x6uac3/quiet_places_to_practise_driving/",
+    "https://www.reddit.com/r/Dublin/comments/1x6stua/panoramic_photo_of_the_sunset_from_sutton_strand/",
+    "https://www.reddit.com/r/Dublin/comments/1x6se6b/missing_phone/",
+    "https://www.reddit.com/r/Dublin/comments/1x6rosa/singles_walkhike_howth_18102026_tickets_sunday_18/",
+    "https://www.reddit.com/r/Dublin/comments/1x6q4xq/i_went_through_all_323_things_on_in_dublin_this/",
+    "https://www.reddit.com/r/Dublin/comments/1x6q2u0/men_of_dublin_what_is_your_goto_budget_perfume/",
+    "https://www.reddit.com/r/Dublin/comments/1x6o3eq/logistics_company/",
+    "https://www.reddit.com/r/Dublin/comments/1x6mpxx/helicopters_in_sandyfordleopardstown_area/",
+    "https://www.reddit.com/r/Dublin/comments/1x6lu8n/nurses_in_dublin/",
+    "https://www.reddit.com/r/Dublin/comments/1x6lbif/whats_on_in_dublin_this_week_a_few_things_worth_a/",
+    "https://www.reddit.com/r/Dublin/comments/1x6kkou/i_made_a_lego_dart/",
+    "https://www.reddit.com/r/Dublin/comments/1x6i66i/bathroom_fitters/",
+    "https://www.reddit.com/r/Dublin/comments/1x6hqs9/employment_fair_2026_oct_15_2pm/",
+    "https://www.reddit.com/r/Dublin/comments/1x6hg1x/luas_fine/",
+    "https://www.reddit.com/r/Dublin/comments/1x6h6pk/attic_conversion_recommendations/",
+    "https://www.reddit.com/r/Dublin/comments/1x6f6er/massive_thank_you_to_the_dubs_and_the_dublin_bus/",
+    "https://www.reddit.com/r/Dublin/comments/1x6dfdd/loud_fire_alarm_system_in_city_centre/",
+    "https://www.reddit.com/r/Dublin/comments/1x65gsl/lack_of_all_day_breakfast_in_blanch_centre/",
+    "https://www.reddit.com/r/Dublin/comments/1x5z01b/to_the_trinitydental_strikers/",
+    "https://www.reddit.com/r/Dublin/comments/1x5y5ye/what_a_city_we_live_in/",
+    "https://www.reddit.com/r/Dublin/comments/1x5xrol/whats_the_trend_with_fireworks/",
+    "https://www.reddit.com/r/Dublin/comments/1x5ww6k/medical_treatment_for_lipoedema_in_dublin/",
+    "https://www.reddit.com/r/Dublin/comments/1x5v7dw/bike_robbery_drumcondra/",
+    "https://www.reddit.com/r/Dublin/comments/1x5sk8t/fairview_skate_park_as_a_beginner/",
+    "https://www.reddit.com/r/Dublin/comments/1x5pnk0/dash_cam_installer_recomendation/",
+    "https://www.reddit.com/r/Dublin/comments/1x5ohiw/eir_fibre_down/",
+    "https://www.reddit.com/r/Dublin/comments/1x5nw2d/worth_it_to_be_a_taxi_driver/",
+    "https://www.facebook.com/groups/346088715883642/permalink/2557587408067084/",
+    "https://www.facebook.com/groups/346088715883642/permalink/2557644998061325/",
+    "https://www.facebook.com/groups/346088715883642/permalink/2557683394724152/",
+    "https://www.facebook.com/groups/346088715883642/permalink/2557735908052234/",
+    "https://www.facebook.com/groups/346088715883642/permalink/2557742424718249/",
+    "https://www.facebook.com/groups/346088715883642/permalink/2557742628051562/",
+    "https://www.facebook.com/groups/346088715883642/permalink/2557755474716944/"
   ]
 }
