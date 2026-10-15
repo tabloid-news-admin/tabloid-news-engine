@@ -1,0 +1,19 @@
+{
+  "name": "tabloid-news-engine",
+  "version": "1.0.0",
+  "description": "Automated news scraping and AI tabloid rewriting engine",
+  "main": "engine.js",
+  "scripts": {
+    "start": "node engine.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "rss-parser": "^3.13.0"
+  },
+  "license": "ISC"
+}
