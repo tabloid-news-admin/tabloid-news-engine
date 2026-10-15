@@ -519,6 +519,136 @@
         "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
       },
       "processed_at": "2026-10-15T16:15:41.585Z"
+    },
+    {
+      "source_url": "https://www.rte.ie/news/connacht/2026/1015/1595563-colm-horkan-inquiry/",
+      "source": "RTÉ",
+      "title": "Family of murdered Garda Horkan call for public inquiry",
+      "image_url": "https://www.rte.ie/images/001d9193-1600.jpg",
+      "rewritten_copy": "**JUSTICE BETRAYAL: HORKAN FAMILY DEMANDS PUBLIC INQUIRY INTO GARDA'S MURDER**\n\nThe family of slain Detective Colm Horkan is furious over the lack of accountability six years after his brutal murder in Castlerea, Co Roscommon, and is now demanding a public inquiry to expose the truth. Detective Horkan was fatally shot by Stephen Silver, who had managed to grab the garda's gun from its allegedly faulty holster. The Horkan family has slammed the authorities, citing repeated warnings from protected disclosers that the holster was not fit for purpose, which were blatantly ignored. Revelations from a recent RTÉ Investigates programme have only added to their outrage, with the family condemning the lack of transparency and the silence from the Minister for Justice and other authorities. The family's scathing statement has laid bare the systemic rot within An Garda Síochána, accusing the establishment of covering up the truth and leaving the public in the dark. By refusing a public inquiry, the government is only fueling suspicions of a cover-up, leaving the Horkan family and the Irish people without justice or answers. The family's call for a public inquiry is a stark reminder of the catastrophic failure of the justice system to protect its own and serve the people, rather than shielding the elite from accountability.",
+      "metrics": {
+        "original_word_count": 194,
+        "rewritten_word_count": 212,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:31:19.392Z"
+    },
+    {
+      "source_url": "https://www.rte.ie/news/business/2026/1015/1595559-gas-networks-bill/",
+      "source": "RTÉ",
+      "title": "Gas Networks issue leading to inflated estimated bills",
+      "image_url": "https://www.rte.ie/images/0004861f-1600.jpg",
+      "rewritten_copy": "**GAS BILL CHAOS: ESTIMATED BILLS GO THROUGH THE ROOF AS GNI METER READING FIASCO HITS CUSTOMERS**\n\nIn a shocking example of bureaucratic bungling, Gas Networks Ireland (GNI) has admitted to a catastrophic failure in their meter reading system, leaving countless gas customers with grossly inflated estimated bills that are many times higher than their usual payments. The scandal, which affects bills covering the period of 9-12 October, has sparked outrage among hard-pressed households already struggling to make ends meet. \n\nGNI, the State-owned utility responsible for the country's gas network, has apologized for the debacle but has refused to disclose the cause of the problem, merely stating that it has been \"identified and fixed\". The company is now scrambling to work with gas suppliers and the Commission for Regulation of Utilities (CRU) to correct the affected bills and prevent further financial hardship for customers.\n\nOne furious Electric Ireland gas customer received an estimated bill of €665.61 for less than two months, a staggering multiple of their normal bill, despite the period in question being a traditionally low-usage time due to warmer weather. The customer's experience is likely just the tip of the iceberg, with many other suppliers, including Bord Gáis Energy, Energia, and Yuno Energy, also affected by the GNI meter reading fiasco.\n\nIn a rare display of customer-centric action, several suppliers have temporarily paused billing and cancelled affected bills to prevent customers from being unfairly charged. However, the fact that this crisis was allowed to happen at all raises serious questions about the competence and accountability of GNI and the broader energy regulatory framework. As the true extent of the damage becomes clear, one thing is certain: the taxpayer-funded bureaucrats at GNI have a lot to answer for.",
+      "metrics": {
+        "original_word_count": 412,
+        "rewritten_word_count": 288,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:31:26.078Z"
+    },
+    {
+      "source_url": "https://www.rte.ie/news/middle-east/2026/1015/1595551-gaza-israel/",
+      "source": "RTÉ",
+      "title": "Commercial goods no longer entering Gaza, Israel says",
+      "image_url": "https://www.rte.ie/images/00252de3-1600.jpg",
+      "rewritten_copy": "GAZA HUMANITARIAN CRISIS: ISRAEL SLAMS BRAKES ON COMMERCIAL GOODS OVER HAMAS TAX EXTORTION\n\nIn a shocking move, Israel has halted the entry of commercial goods into Gaza, citing a blatant tax extortion scheme by Hamas that's crippling the already beleaguered territory. The Israeli military body COGAT announced that Gazan merchants had refused to coordinate with them over the entry of commercial goods, due to a draconian 10,000 shekel fee imposed by Hamas on each truck entering Gaza, as well as a demand for 30% of all sales to be made in cash. Hamas claims the fee is a \"voluntary\" payment to a national fund, but it's clear that this is just another example of the terrorist organization's blatant exploitation of its own people. With over two-thirds of Gazans facing acute hunger by the end of the year, this latest move will only exacerbate the humanitarian crisis, leaving innocent civilians to suffer while Hamas elitists line their pockets. Meanwhile, Israeli forces have been forced to launch over 1,000 attacks on Gaza in the past 12 months, resulting in the deaths of over 1,400 Palestinians, including at least 300 children, as the territory teeters on the brink of collapse. The international community must wake up to the reality of Hamas's stranglehold on Gaza and demand action to end this senseless suffering.",
+      "metrics": {
+        "original_word_count": 423,
+        "rewritten_word_count": 219,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:31:34.102Z"
+    },
+    {
+      "source_url": "https://www.rte.ie/news/world/2026/1015/1595562-maduro-torture-charges/",
+      "source": "RTÉ",
+      "title": "Maduro pleads not guilty to torture charges in US",
+      "image_url": "https://www.rte.ie/images/0023b0dc-1600.jpg",
+      "rewritten_copy": "MADURO'S DESPERATE DENIAL: OUSTED VENEZUELAN DICTATOR PLEADS NOT GUILTY TO TORTURE CHARGES\n\nIn a shocking display of arrogance, ousted Venezuelan President Nicolas Maduro and his wife Cilia Flores pleaded not guilty to new US indictment charges accusing them of conspiring to torture political opponents, a brazen attempt to cling to their crumbling legacy of socialist tyranny. The additional charges significantly expand the US criminal case against the power-hungry pair, who previously pleaded not guilty to charges of abusing their power to help drug traffickers ship cocaine, a stark reminder of the systemic rot that defined their 13-year reign of terror.\n\nAs they stood shackled and clad in prison uniforms in a Manhattan federal court, Maduro and Flores attempted to feign innocence, with Maduro claiming the accusations against him were \"false\" and Flores proclaiming she was \"completely innocent.\" However, the damning indictment tells a different story, alleging that Maduro directed Venezuelan officials to torture opposition politicians and military personnel to maintain his grip on power, including a shocking incident in 2014 where he ordered officials to kidnap military personnel and \"squeeze them harder\" to extract information.\n\nThe pair's desperate denials come as no surprise, given their long history of human rights abuses, corruption, and election-rigging, which led to successive US administrations imposing sanctions on top Venezuelan officials and key state companies. Maduro's capture and extradition to the US have been touted as a major foreign policy success by President Trump, who has ramped up cooperation with Venezuela's new leadership, a stark contrast to the failed policies of the socialist elite that prioritized ideology over the welfare of the Venezuelan people.\n\nWith a mandatory minimum sentence of 50 years in prison looming over them if convicted, Maduro and Flores are facing the very real possibility of spending the rest of their lives behind bars, a fitting consequence for their heinous crimes against the Venezuelan people. As the trial date approaches, one thing is clear: the era of socialist tyranny in Venezuela is finally coming to an end, and those responsible for its brutal suppression will be brought to justice.",
+      "metrics": {
+        "original_word_count": 491,
+        "rewritten_word_count": 347,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:31:43.407Z"
+    },
+    {
+      "source_url": "https://www.rte.ie/news/2026/1015/1595409-oconnell-street-artists-studios/",
+      "source": "RTÉ",
+      "title": "Affordable studio spaces for 22 artists open in Dublin",
+      "image_url": "https://www.rte.ie/images/00252c68-1600.jpg",
+      "rewritten_copy": "STUDIOS FOR ELITE ARTISTS WHILE WORKING CLASS COMMUNITIES SUFFER\nIn a move that reeks of elitist pandering, twenty-two new affordable studio spaces for artists have opened on O'Connell Street in Dublin, courtesy of Visual Artists Ireland and funded by Dublin City Council and wealthy investor Mel Sutcliffe's Quanta Capital. This egregious example of taxpayer squandering prioritizes the needs of professional visual artists over the pressing concerns of hard-pressed working-class families struggling to make ends meet. The building, once home to a shoe company, has been refurbished into individual workspaces, a stark reminder of the systemic rot that favors trendy artistic projects over the everyday needs of ordinary citizens. VAI director Noel Kelly gleefully announced plans to roll out more of these projects, further draining the coffers of local authorities and diverting resources away from essential services. Meanwhile, artists like Kathrina Rupit, who had the means to apply for and secure one of these coveted spots, are thrilled to have found a space to pursue their crafts, utterly detached from the harsh realities of the cost-of-living crisis gripping the city.",
+      "metrics": {
+        "original_word_count": 227,
+        "rewritten_word_count": 179,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:31:48.373Z"
+    },
+    {
+      "source_url": "https://www.dublinlive.ie/news/dublin-news/connections-arts-centre-empowers-adults-34771407",
+      "source": "Dublin Live",
+      "title": "Connections Arts Centre empowers adults with disabilities through art",
+      "image_url": "https://i2-prod.dublinlive.ie/article34771482.ece/ALTERNATES/s1200d/0_Rathgar-Arts-Centre.png",
+      "rewritten_copy": "**ARTISTIC REVOLUTION IN RATHGAR: LOCAL HEROES FIGHTING FOR INCLUSION**\n\nIn a groundbreaking initiative, the Connections Arts Centre in Rathgar is empowering adults with intellectual disabilities and neurodivergent individuals to break down barriers and unlock their creative potential. This pioneering project has already supported a staggering 3,406 class participants, providing a safe and accessible space for society's most vulnerable to thrive. Founder and CEO Miriam Spollen's vision is to create a hub where people with disabilities can come together, learn, grow, and connect through the arts, free from fear and judgement.\n\nThe centre's remarkable success stories, such as Michael, a young man who discovered his artistic talent through their programmes, are a testament to the power of community and creativity. With 40 artists now supported, the centre is making waves in the local community, engaging with secondary school students and fostering a culture of inclusion. However, despite their achievements, the centre relies heavily on government support and core funding to continue their vital work, highlighting the need for a more sustainable and inclusive approach to funding for social enterprises.\n\nLabour Cllr Fiona Connelly and Independent Cllr Mannix Flynn have praised the centre's work, recognizing its far-reaching benefits for the entire community. However, their calls for increased funding and support must be matched with action, rather than empty rhetoric. The centre's operations manager, Barry Mocke, emphasized the importance of community engagement, stating that their Transition Year programme not only benefits adults with disabilities but also helps secondary school students develop confidence and leadership skills.\n\nAs the Connections Arts Centre continues to push boundaries and challenge societal norms, it is essential to acknowledge the systemic barriers that have held people with disabilities back for far too long. The United Nations Convention on the Rights of Persons with Disabilities seeks to move people out of segregated campuses and into inclusive community spaces, but more needs to be done to support organizations like the Connections Arts Centre. With its innovative approach to artistic expression and community building, this centre is a beacon of hope for a more inclusive and compassionate society.",
+      "metrics": {
+        "original_word_count": 862,
+        "rewritten_word_count": 346,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:31:59.756Z"
+    },
+    {
+      "source_url": "https://www.dublinlive.ie/news/dublin-news/urgent-recall-issued-popular-breakfast-34766141",
+      "source": "Dublin Live",
+      "title": "Urgent recall issued for popular breakfast foods over possible flour beetle presence",
+      "image_url": "https://i2-prod.dublinlive.ie/article33509338.ece/ALTERNATES/s1200d/0_Tesco-stock.jpg",
+      "rewritten_copy": "**PORRIDGE AND FISH RECALL CHAOS HITS IRELAND**\n\nIn a shocking betrayal of consumer trust, certain batches of Ready Brek and Tesco Super Smooth Porridge have been yanked from shelves due to potential contamination with disgusting flour beetles, leaving hard-working families to wonder how such a catastrophe was allowed to happen. The Food Safety Authority of Ireland has finally sounded the alarm, warning that the presence of these vile insects makes the products downright dangerous for human consumption. Meanwhile, shops are scrambling to pull the affected batches, posting recall notices in a desperate bid to prevent further harm to unsuspecting shoppers.\n\nBut that's not all - in a separate and equally alarming development, SuperValu has been forced to recall batches of its Smoked Salmon products due to the detection of listeria monocytogenes, a deadly bacterium that can trigger severe complications, particularly among vulnerable groups like expectant mothers, babies, and the elderly. This latest food safety fiasco is a damning indictment of the systemic rot at the heart of Ireland's food regulation system, which is clearly failing to protect the very people it's supposed to serve. As the taxpayer-funded Food Safety Authority of Ireland struggles to get a grip on the crisis, one thing is clear: the health and wellbeing of ordinary citizens are being recklessly endangered by the incompetence of the establishment elites.",
+      "metrics": {
+        "original_word_count": 254,
+        "rewritten_word_count": 222,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:32:07.917Z"
+    },
+    {
+      "source_url": "https://www.dublinlive.ie/news/dublin-news/elderly-father-waterford-blaze-victim-34766091",
+      "source": "Dublin Live",
+      "title": "Elderly father of Waterford blaze victim breaks down at vigil metres from scene",
+      "image_url": "https://i2-prod.dublinlive.ie/article34766088.ece/ALTERNATES/s1200d/0_JS421231476.jpg",
+      "rewritten_copy": "**TRAGEDY IN BIRCHWOOD: COMMUNITY LEFT REELING AFTER ARSON ATTACK CLAIMS FOUR LIVES**\n\nIn a devastating display of senseless violence, a horrific arson attack has torn apart a family in Birchwood estate, Co Waterford, leaving four innocent lives lost and a community in ruins. The tragic incident has sparked widespread outrage and grief, with hundreds gathering for a poignant balloon release to honor the memories of Kim English, Philip English, and their two children, Jayden and Callum. As the crowd released pink and blue balloons into the sky, emotional cries of \"We love ye\" filled the air, followed by a heartfelt rendition of \"You'll Never Walk Alone\" that left many struggling to hold back tears.\n\nThe parish priest, Fr Gerry Chestnutt, delivered a scathing rebuke to those responsible for the heinous crime, urging them to \"have the courage to stand up, admit what you did and face the consequences of what you did.\" His words were met with a sense of determination and anger from the crowd, who are demanding justice for the victims and their loved ones. Meanwhile, Bishop Alphonsus Cullinan acknowledged that the full weight of the tragedy is beginning to sink in, leaving the community to grapple with the harsh reality of what has happened.\n\nAs the investigation continues, locals are calling for those responsible to \"own up\" to their actions, with Philip's uncle James English pleading for the perpetrators to step forward and take responsibility. The family's former wife, Ann English, described feeling \"numb\" and \"in disbelief\" since learning the news, highlighting the devastating impact of the tragedy on the community. With the National Educational Psychological Service offering support to students and parents at Scoil Lorcáin, where Callum was a pupil, it is clear that the road to healing will be long and arduous for those affected by this senseless tragedy.",
+      "metrics": {
+        "original_word_count": 925,
+        "rewritten_word_count": 304,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:32:16.521Z"
+    },
+    {
+      "source_url": "https://www.dublinlive.ie/news/dublin-news/luas-line-partial-closure-weekend-34766048",
+      "source": "Dublin Live",
+      "title": "Luas line partial closure this weekend due to engineering works with 'significant service' disruption",
+      "image_url": "https://i2-prod.dublinlive.ie/article15959529.ece/ALTERNATES/s1200d/0_CC-LUAS-STRIKE-_990335207.jpg",
+      "rewritten_copy": "**LUAS CHAOS: RED LINE SHUTDOWN LEAVES COMMUTERS STRANDED**\n\nThe incompetence of Transport Infrastructure Ireland (TII) has struck again, with the announcement of a partial closure of the Luas Red Line this weekend. From Saturday to Sunday, passengers will be forced to endure a replacement bus service between Tallaght/Saggart and Heuston Luas Stop, while a limited Luas service will operate from Heuston to The Point. This is all due to \"essential engineering works\" that TII claims are necessary to ensure a \"safe, reliable tram service\" - a pledge that rings hollow given the consistent failures of our transport system.\n\nThe replacement bus service will run every 15 minutes, but passengers will still face significant disruptions, with several stops bypassed due to \"limited set-down space\". Those heading to Fatima, Rialto, Goldenbridge, or Drimnagh will have to navigate lengthy walks to alternative stops, a clear example of the TII's blatant disregard for the needs of working-class communities. The fact that a valid Luas ticket or TFI Leap Card is required to use the replacement bus service is just another example of the taxpayer fleecing that has become all too common in our transport system.\n\nIt's a stark reminder that the Leinster House elites are more concerned with virtue-signaling about \"sustainable transport\" than actually delivering reliable services to hard-pressed commuters. The Luas Red Line shutdown is just the latest catastrophe in a long line of transport failures, and it's time for the TII to be held accountable for their systemic rot. Full Luas Red Line services will resume on Monday, but for now, commuters are left to pick up the pieces of yet another establishment failure.",
+      "metrics": {
+        "original_word_count": 717,
+        "rewritten_word_count": 272,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:32:26.730Z"
+    },
+    {
+      "source_url": "https://www.dublinlive.ie/news/dublin-news/schools-across-ireland-open-normal-34765991",
+      "source": "Dublin Live",
+      "title": "Schools across Ireland to open as normal as threat to safety incident investigated",
+      "image_url": "https://i2-prod.dublinlive.ie/article34480486.ece/ALTERNATES/s1200d/1_GettyImages-1229938575-2.jpg",
+      "rewritten_copy": "**SCHOOL SAFETY BREACH: IRELAND'S EDUCATION SYSTEM ROCKED BY SINISTER EMAIL THREATS**\n\nIn a shocking betrayal of trust, over 100 schools across Ireland were targeted by a sinister email threat, leaving parents and pupils on high alert. The Gardai are scrambling to investigate the credibility of these menacing communications, which have understandably sparked widespread concern among hard-working families. While the Leinster House elites continue to prioritize their own interests, it's the working-class communities who are left to pick up the pieces and worry about the safety of their children.\n\nThe Department of Education, in a belated response, has finally confirmed that they are aware of the threatening emails and has advised schools to report the threats to the Gardai. However, this half-hearted effort does little to alleviate the fears of parents who are already struggling to make ends meet. The fact that schools are expected to \"operate as normal\" on Thursday despite this blatant safety breach is a stark reminder of the systemic rot that plagues our education system.\n\nAs the Gardai carry out searches across several schools as a precaution, it's clear that the establishment is more concerned with maintaining a semblance of order than actually addressing the root causes of this crisis. The people of Ireland deserve better than to have their children's safety compromised by the incompetence of those in power. It's time for the taxpayer-funded bureaucrats to take responsibility and ensure that our schools are safe and secure, rather than just paying lip service to the concerns of hard-pressed families.",
+      "metrics": {
+        "original_word_count": 365,
+        "rewritten_word_count": 253,
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+      },
+      "processed_at": "2026-10-15T17:32:36.925Z"
     }
   ]
 }

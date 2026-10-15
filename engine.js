@@ -6,6 +6,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const Parser = require('rss-parser');
 const { urlExists, saveArticle } = require('./database');
+const fs = require('fs');
 
 // ---------------------------------------------------------------------------
 // CONFIG
@@ -185,12 +186,15 @@ async function rewriteAsTabloid(article, attempt = 1) {
   const userPrompt = article.original_text.slice(0, MAX_SOURCE_CHARS);
 
   try {
+    // Dynamically pull the latest rules directly from our external text file
+    const dynamicGuidelines = fs.readFileSync('prompt.txt', 'utf8');
+
     const { data } = await axios.post(
       TOGETHER_URL,
       {
         model: MODEL,
         messages: [
-          { role: 'system', content: TABLOID_GUIDELINES },
+          { role: 'system', content: dynamicGuidelines }, // Swapped to use our new file content
           { role: 'user', content: userPrompt },
         ],
         temperature: 0.7,
@@ -221,6 +225,7 @@ async function rewriteAsTabloid(article, attempt = 1) {
     throw new Error(detail);
   }
 }
+
 
 // ---------------------------------------------------------------------------
 // MAIN
@@ -259,6 +264,8 @@ async function main() {
   }
 
   console.log(`\nDone. ${saved}/${newArticles.length} article(s) rewritten and recorded.`);
+  // Add this line to force the terminal to shut down cleanly when running manually:
+process.exit(0); 
 }
 
 main().catch((err) => {
