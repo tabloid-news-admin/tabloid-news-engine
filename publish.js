@@ -1,314 +1,162 @@
-// publish.js
-// Compiles database.json into a flat, Guardian-style broadsheet at index.html
 const fs = require('fs');
 const path = require('path');
 
 const DB_PATH = path.join(__dirname, 'database.json');
-const OUT_PATH = path.join(__dirname, 'index.html');
+const OUTPUT_PATH = path.join(__dirname, 'index.html');
 
-const SITE_NAME = 'The Tabloid';
-const MAX_LOCAL = 40;
-const MAX_NATIONAL = 24;
-
-// ---------- Helpers ----------
-const esc = (s) =>
-  String(s ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-
-// Field names vary between engines, so take the first one that exists.
-// Adjust these lists if your database objects use different keys.
-const pick = (obj, keys) => {
-  for (const k of keys) if (obj && obj[k]) return obj[k];
-  return '';
-};
-const getHeadline = (a) => pick(a, ['one_sentence_summary', 'headline', 'title', 'rewritten_title']);
-
-const getBody = (a) => pick(a, ['justification', 'body', 'summary', 'standfirst', 'rewritten', 'content']);
-const getPillar = (a) => pick(a, ['pillar', 'category']) || 'News';
-const getLink = (a) => pick(a, ['source_url', 'url', 'link']);
-const getTime = (a) => Date.parse(pick(a, ['processed_at', 'published_at', 'date'])) || 0;
-
-// Map any pillar name onto the three palette colours.
-function pillarClass(name) {
-  const n = String(name).toLowerCase();
-  if (/sport|gaa|football|rugby|soccer|athletic/.test(n)) return 'sports';
-  if (/event|communit|culture|what.?s on|arts|entertain|life/.test(n)) return 'events';
-  return 'news';
+function readDb() {
+  if (!fs.existsSync(DB_PATH)) return { local_articles: [], articles: [] };
+  try {
+    return JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+  } catch (err) {
+    return { local_articles: [], articles: [] };
+  }
 }
 
-function formatDate(d = new Date()) {
-  return d.toLocaleDateString('en-IE', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
+// Crisp, high-fidelity styles compiled via clean, readable single-quote lines
+const stylesArray = [
+  '@font-face {',
+  '  font-family: \'GH Guardian Headline\';',
+  '  src: url(\'https://guim.co.uk\') format(\'woff2\');',
+  '  font-weight: 300;',
+  '  font-style: normal;',
+  '  font-display: swap;',
+  '}',
+  '@font-face {',
+  '  font-family: \'GH Guardian Headline\';',
+  '  src: url(\'https://guim.co.uk\') format(\'woff2\');',
+  '  font-weight: 400;',
+  '  font-style: normal;',
+  '  font-display: swap;',
+  '}',
+  ':root {',
+  '  --bg-canvas: #F6F6F6;',
+  '  --guardian-blue: #005689;',
+  '  --ink: #121212;',
+  '  --charcoal: #333333;',
+  '  --muted: #666666;',
+  '  --hairline: #DCDCDC;',
+  '  --serif: \'GH Guardian Headline\', Georgia, serif;',
+  '  --sans: system-ui, -apple-system, \'Segoe UI\', Arial, sans-serif;',
+  '}',
+  '* { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0; box-shadow: none; }',
+  'html, body { background: var(--bg-canvas); }',
+  'body { color: var(--charcoal); font-family: var(--sans); line-height: 1.5; -webkit-font-smoothing: antialiased; }',
+  'a { color: inherit; text-decoration: none; }',
+  'a:hover { text-decoration: underline; }',
+  '.masthead { width: 100%; background: var(--guardian-blue); color: #fff; }',
+  '.masthead-inner { max-width: 1300px; margin: 0 auto; padding: 20px 20px 16px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }',
+  '.logo { font-family: var(--serif); font-weight: 300 !important; font-size: clamp(3.4rem, 10vw, 4.6rem); line-height: 0.92; letter-spacing: -1.8px; text-transform: lowercase; color: #fff; }',
+  '.masthead-date { font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); padding-bottom: 6px; }',
+  '.page { max-width: 1300px; margin: 0 auto; padding: 0 20px 24px; }',
+  '.section { display: flex; align-items: stretch; border-top: 1px solid var(--hairline); margin-top: 24px; }',
+  '.kick-lane { flex: 0 0 200px; width: 200px; padding: 0 16px 16px 0; border-right: 1px solid var(--hairline); }',
+  '.kick-title { display: block; font-family: var(--serif); font-weight: 700 !important; font-size: 1.6rem; line-height: 1.1; letter-spacing: -0.4px; color: var(--ink); border-top: 6px solid var(--guardian-blue); padding-top: 10px; margin-top: -1px; }',
+  '.content-lane { flex: 1; min-width: 0; }',
+  '.grid-clip { overflow: hidden; }',
+  '.grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-right: -1px; margin-bottom: -1px; }',
+  '.card { background: transparent; border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 10px 16px 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }',
+  '.card:first-child { grid-column: span 2; }',
+  '.badge { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; font-family: var(--sans); font-size: 0.8rem; font-weight: 700; line-height: 1; }',
+  '.badge::before { content: \'\'; display: block; width: 20px; height: 3px; background: currentColor; }',
+  '.card-media { margin: 2px 0 0; }',
+  '.card-media img { display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover; background: var(--hairline); }',
+  '/* 🚨 CRUSHING ALL USER-AGENT AND BROWSER OVERRIDES */',
+  '.card-headline, .card-headline h2, .card-headline a, .card-headline h2 a { font-family: var(--serif) !important; font-weight: 300 !important; font-size: 1.45rem !important; line-height: 1.15 !important; letter-spacing: -0.4px !important; color: var(--ink) !important; }',
+  '.card:first-child .card-headline, .card:first-child .card-headline h2, .card:first-child .card-headline a, .card:first-child .card-headline h2 a { font-family: var(--serif) !important; font-weight: 300 !important; font-size: 2.2rem !important; line-height: 1.1 !important; letter-spacing: -0.8px !important; }',
+  '.card-body { font-family: var(--sans); font-size: 0.95rem; line-height: 1.5; color: var(--charcoal); }',
+  '.empty { padding: 40px 0; color: var(--muted); }',
+  '@media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); } }',
+  '@media (max-width: 760px) {',
+  '  .section { flex-direction: column; }',
+  '  .kick-lane { flex: none; width: 100%; padding: 0 0 12px; border-right: none; border-bottom: 1px solid var(--hairline); }',
+  '  .grid { grid-template-columns: 1fr; }',
+  '  .card:first-child { grid-column: span 1; }',
+  '  .card, .card:first-child { padding-left: 0; padding-right: 0; }',
+  '  .card:first-child .card-headline { font-size: 1.9rem; }',
+  '}'
+];
+const CSS = stylesArray.join('\n');
+
+function compile() {
+  const db = readDb();
+  const localArticles = db.local_articles || [];
+  
+  // Captures all your force-run bypass items cleanly
+  const filteredLocal = localArticles.filter(function(art) { return art; });
+
+  const formattedDate = new Date().toLocaleDateString('en-IE', { 
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
   });
-}
 
-// ---------- Card template ----------
-function renderCard(art, index, { lead = false } = {}) {
-  const headline = getHeadline(art);
-  const body = getBody(art);
-  const pillar = getPillar(art);
-  const link = getLink(art);
-  const cls = pillarClass(pillar);
+  let cardsHtml = '';
 
-  // Image block only when image_url is present
-  const imgBlock = art.image_url
-    ? `<figure class="card-media"><img src="${esc(art.image_url)}" alt="${esc(headline)}" loading="lazy"></figure>`
-    : '';
+  if (filteredLocal.length === 0) {
+    cardsHtml = '<div class="empty">No community updates flagged for dispatch today.</div>';
+  } else {
+    filteredLocal.forEach(function(art) {
+      let colorCode = '#005689'; 
+      if (art.pillar && art.pillar.indexOf('1') !== -1) colorCode = '#c70000';
+      if (art.pillar && art.pillar.indexOf('2') !== -1) colorCode = '#e05e00';
+      if (art.pillar && art.pillar.indexOf('3') !== -1) colorCode = '#0084c7';
+      if (art.pillar && art.pillar.indexOf('4') !== -1) colorCode = '#7d00b3';
 
-  const headlineHtml = link
-    ? `<a href="${esc(link)}" target="_blank" rel="noopener">${esc(headline)}</a>`
-    : esc(headline);
+      let mediaHtml = '';
+      if (art.image_url && art.image_url !== '') {
+        mediaHtml = '<div class="card-media"><img src="' + art.image_url + '" alt="News Image"></div>';
+      }
 
-  return `
-    <article class="card${lead ? ' card-lead' : ''}">
-      <span class="badge badge-${cls}">${esc(pillar)}</span>
-      <h2 class="card-headline">${headlineHtml}</h2>
-      ${imgBlock}
-      ${body ? `<p class="card-body">${esc(body)}</p>` : ''}
-    </article>`;
-}
+      const title = art.one_sentence_summary || art.title || 'Local Update';
+      const body = art.justification || art.content || '';
+      const source = art.source_url || art.url || '#';
+      const pillarLabel = art.pillar || 'LOCAL';
 
-function renderSection(title, items) {
-  if (!items.length) return '';
-  return `
-    <section class="section">
-      <h3 class="section-title">${esc(title)}</h3>
-      <div class="grid-clip">
-        <div class="grid">
-          ${items.map((a, i) => renderCard(a, i, { lead: i === 0 })).join('\n')}
-        </div>
-      </div>
-    </section>`;
-}
-
-// ---------- CSS ----------
-const CSS = `
-/* 🚨 INJECTING THE GENUINE GUARDIAN HEADLINE WEB FONTS */
-@font-face {
-  font-family: 'GH Guardian Headline';
-  src: url('https://guim.co.uk') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'GH Guardian Headline Bold';
-  src: url('https://guim.co.uk') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-
-:root {
-  --bg-canvas: #f6f6f6;
-  --guardian-blue: #005689;
-  --text-headline: #121212;
-  --line-hairline: #dcdcdc;
-  --pillar-news: #c70000;
-  --pillar-events: #e05e00;
-  --pillar-sports: #0084c7;
-  --text-body: #333333;
-  --text-muted: #666666;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0; box-shadow: none; }
-html { background: var(--bg-canvas); }
-body {
-  background: var(--bg-canvas);
-  color: var(--text-body);
-  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
-}
-a { color: inherit; text-decoration: none; }
-a:hover { text-decoration: underline; }
-a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; }
-
-/* Masthead - Using the brand serif font with signature Guardian casing rules */
-.masthead { background: var(--guardian-blue); color: #ffffff; }
-.masthead-inner {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 18px 20px 14px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.logo {
-  font-family: 'GH Guardian Headline', Georgia, serif;
-  font-weight: 700;
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
-  line-height: 0.95;
-  letter-spacing: -1.5px;
-  color: #ffffff;
-  text-transform: lowercase; /* Replicates the iconic Guardian logo footprint */
-}
-.masthead-date {
-  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.85);
-  padding-bottom: 6px;
-}
-.masthead-rule { border-top: 1px solid rgba(255, 255, 255, 0.3); }
-
-/* Page frame: flat continuous canvas */
-.page { max-width: 1300px; margin: 0 auto; padding: 0 20px 40px; }
-.section { padding-top: 22px; }
-.section-title {
-  font-family: 'GH Guardian Headline Bold', Georgia, serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--guardian-blue);
-  letter-spacing: -0.3px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--line-hairline);
-}
-
-/* Hairline grid: separation by borders only */
-.grid-clip { overflow: hidden; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-right: -1px;   /* hides the trailing right hairline */
-  margin-bottom: -1px;  /* hides the trailing bottom hairline */
-}
-.card {
-  background: transparent;
-  padding: 14px 16px 18px;
-  border-right: 1px solid var(--line-hairline);
-  border-bottom: 1px solid var(--line-hairline);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
-}
-.card:first-child { padding-left: 0; }
-.card-lead { grid-column: span 2; }
-
-/* Pillar badges: short colour rule + coloured label */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  align-self: flex-start;
-  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1;
-}
-.badge::before { content: ''; display: block; width: 22px; height: 3px; background: currentColor; }
-.badge-news { color: var(--pillar-news); }
-.badge-events { color: var(--pillar-events); }
-.badge-sports { color: var(--pillar-sports); }
-
-/* Headlines: mapped directly to our premium broadsheet fonts */
-.card-headline {
-  font-family: 'GH Guardian Headline Bold', Georgia, serif;
-  font-weight: 700;
-  font-size: 1.45rem;
-  line-height: 1.15;
-  letter-spacing: -0.2px;
-  color: var(--text-headline);
-  margin-top: 2px;
-}
-.card-lead .card-headline { font-size: 2.1rem; letter-spacing: -0.5px; line-height: 1.1; }
-
-.card-media { margin-top: 4px; }
-.card-media img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 5 / 3;
-  object-fit: cover;
-  background: var(--line-hairline);
-}
-.card-body { 
-  font-size: 0.95rem; 
-  line-height: 1.5; 
-  color: var(--text-body);
-  font-family: system-ui, -apple-system, sans-serif; /* Clean sans body text for contrast */
-}
-
-.footer {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 16px 20px 40px;
-  border-top: 1px solid var(--line-hairline);
-  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-.empty { padding: 40px 0; color: var(--text-muted); }
-
-@media (max-width: 1000px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .card-lead { grid-column: span 2; }
-}
-@media (max-width: 620px) {
-  .grid { grid-template-columns: 1fr; }
-  .card-lead { grid-column: span 1; }
-  .card, .card:first-child { padding-left: 0; padding-right: 0; }
-  .card-lead .card-headline { font-size: 1.7rem; }
-}
-  `;
-
-
-// ---------- Build ----------
-function build() {
-  if (!fs.existsSync(DB_PATH)) {
-    console.error('database.json not found.');
-    process.exit(1);
+      cardsHtml += '<div class="card">\n' +
+                   '  <div class="badge" style="color: ' + colorCode + ';">' + pillarLabel + '</div>\n' +
+                   '  ' + mediaHtml + '\n' +
+                   '  <h2 class="card-headline"><a href="' + source + '" target="_blank">' + title + '</a></h2>\n' +
+                   '  <p class="card-body">' + body + '</p>\n' +
+                   '</div>\n';
+    });
   }
 
-  const db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
-  const byNewest = (a, b) => getTime(b) - getTime(a);
+  const htmlOutput = [
+    '<!DOCTYPE html>',
+    '<html lang="en-IE">',
+    '<head>',
+    '<meta charset="utf-8">',
+    '<meta name="viewport" content="width=device-width, initial-scale=1">',
+    '<title>The North Dublin Chronicle</title>',
+    '<style>' + CSS + '</style>',
+    '</head>',
+    '<body>',
+    '  <div class="masthead">',
+    '    <div class="masthead-inner">',
+    '      <div class="logo">the chronicle</div>',
+    '      <div class="masthead-date">' + formattedDate + '</div>',
+    '    </div>',
+    '  </div>',
+    '  ',
+    '  <div class="page">',
+    '    <div class="section">',
+    '      <div class="kick-lane">',
+    '        <span class="kick-title">Dublin local</span>',
+    '      </div>',
+    '      <div class="content-lane">',
+    '        <div class="grid-clip">',
+    '          <div class="grid">',
+    '            ' + cardsHtml,
+    '          </div>',
+    '        </div>',
+    '      </div>',
+    '    </div>',
+    '  </div>',
+    '</body>',
+    '</html>'
+  ];
 
-  const filteredLocal = (db.local_articles || [])
-    .filter((a) => getHeadline(a))
-    .sort(byNewest)
-    .slice(0, MAX_LOCAL);
-
-  const national = (db.articles || [])
-    .filter((a) => getHeadline(a))
-    .sort(byNewest)
-    .slice(0, MAX_NATIONAL);
-
-  // Local cards are rendered through the same template, so image_url shows only when present
-  const localSection = renderSection('Dublin local', filteredLocal);
-  const nationalSection = renderSection('National', national);
-
-  const html = `<!DOCTYPE html>
-<html lang="en-IE">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(SITE_NAME)}</title>
-
-<style>${CSS}</style>
-</head>
-<body>
-<header class="masthead">
-  <div class="masthead-inner">
-    <div class="logo">${esc(SITE_NAME)}</div>
-    <div class="masthead-date">${esc(formatDate())}</div>
-  </div>
-  <div class="masthead-rule"></div>
-</header>
-<main class="page">
-  ${localSection}
-  ${nationalSection}
-  ${!localSection && !nationalSection ? '<p class="empty">No stories yet. Run engine.js or local_engine.js, then publish again.</p>' : ''}
-</main>
-<footer class="footer">Last compiled ${esc(new Date().toLocaleString('en-IE'))}</footer>
-</body>
-</html>`;
-
-  fs.writeFileSync(OUT_PATH, html, 'utf8');
-  console.log(`Published index.html: ${filteredLocal.length} local, ${national.length} national.`);
-  process.exit(0);
+  fs.writeFileSync(OUTPUT_PATH, htmlOutput.join('\n'), 'utf8');
+  console.log('Success! Compiled unified broadsheet layout without standard backtick strings.');
 }
 
-build();
+compile();
