@@ -5,24 +5,22 @@
       "is_newsworthy": true,
       "pillar": "4 EDUCATION & SPECIAL NEEDS",
       "entities_mentioned": [
-        "St David's College",
+        "St David’s College",
         "United Airlines",
-        "Dublin Airport",
-        "Roger Berry",
-        "Gary McLean"
+        "Dublin Airport"
       ],
-      "one_sentence_summary": "Students from St David's College in Artane participated in Girls in Aviation Day, exploring career pathways in the aviation sector with United Airlines and Dublin Airport",
-      "justification": "This event promotes education and career opportunities for young women in the aviation sector, aligning with the education and special needs pillar, and has a direct impact on the North Dublin community through the involvement of local students from St David's College.",
+      "one_sentence_summary": "St David’s College in Artane partnered with United Airlines and Dublin Airport to inspire 28 girls to consider careers in aviation and STEM fields on Girls in Aviation Day.",
+      "justification": "This event promotes education and career opportunities for young women in North Dublin, specifically in the fields of aviation and STEM, which is relevant to the local community and aligns with the education and special needs pillar.",
       "source": "Dublin People Northside West",
       "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/15/inspiring-the-next-generation/",
       "original_title": "Inspiring the next generation",
       "published_at": "2026-10-15T08:52:36.000Z",
-      "processed_at": "2026-10-17T16:15:27.526Z",
+      "processed_at": "2026-10-17T17:11:26.680Z",
       "image_url": "https://dublinpeople.com/wp-content/uploads/2026/10/14-new-aviation2-300x225.jpg"
     },
     {
       "is_newsworthy": true,
-      "pillar": "1 NEWS",
+      "pillar": "2 EVENTS",
       "entities_mentioned": [
         "Draíocht Theatre",
         "Tony Murphy",
@@ -30,17 +28,17 @@
         "Veronica Coburn",
         "Sinéad Diskin",
         "Sibéal Davitt",
-        "Rory O’Byrne",
+        "Rory O'Byrne",
         "Michael D. Higgins",
         "Emer McGowan"
       ],
       "one_sentence_summary": "Draíocht Theatre in Blanchardstown celebrates 25 years of operation, marking a significant milestone in providing cultural and artistic experiences to the local community.",
-      "justification": "This article is newsworthy as it highlights a significant achievement of a local cultural institution, Draíocht Theatre, which has been serving the community for 25 years, and its impact on the local arts scene and community engagement.",
+      "justification": "This item is newsworthy as it highlights a significant anniversary of a local arts centre, which has had a profound impact on the community, and features notable attendees and speakers, including the Mayor of Fingal County Council and the President of Ireland.",
       "source": "Dublin People Northside West",
       "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/14/draiocht-25/",
       "original_title": "Draíocht celebrates 25 years in operation",
       "published_at": "2026-10-14T07:18:46.000Z",
-      "processed_at": "2026-10-17T16:15:29.660Z",
+      "processed_at": "2026-10-17T17:11:29.486Z",
       "image_url": null
     },
     {
@@ -51,13 +49,13 @@
         "James Browne",
         "Leo Varadkar"
       ],
-      "one_sentence_summary": "Social Democrats TD Rory Hearne calls for an eviction ban to address the homeless crisis, while Minister for Housing James Browne claims it would 'kill supply' and instead emphasizes the government's efforts to provide emergency accommodation and social housing",
-      "justification": "This article matters to local residents in North Dublin as it discusses the government's response to the homeless crisis, a major issue affecting the community, and features a local TD's proposal for an eviction ban, which could have a significant impact on housing and homelessness in the area",
+      "one_sentence_summary": "Social Democrats TD Rory Hearne calls for an eviction ban to address the homeless crisis, contradicting Minister for Housing James Browne's stance on the issue, which affects North Dublin communities",
+      "justification": "This item matters to local residents as it discusses a proposal by a local TD to address the homeless crisis, which is a significant issue in North Dublin, and highlights the differing opinions of local politicians on how to tackle the problem.",
       "source": "Dublin People Northside West",
       "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/14/hearne-eviction-ban/",
       "original_title": "Eviction ban needed to stop homeless “disaster” says Hearne",
       "published_at": "2026-10-14T07:18:38.000Z",
-      "processed_at": "2026-10-17T16:15:31.716Z",
+      "processed_at": "2026-10-17T17:11:32.291Z",
       "image_url": null
     },
     {
@@ -70,7 +68,7 @@
       "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/13/call-for-dublin-airport-terminal-3-solution/",
       "original_title": "Call for Dublin Airport Terminal 3 solution",
       "published_at": "2026-10-13T09:31:20.000Z",
-      "processed_at": "2026-10-17T16:15:32.666Z",
+      "processed_at": "2026-10-17T17:11:33.209Z",
       "image_url": null
     },
     {
@@ -85,13 +83,13 @@
         "Declan Bolger",
         "Jerry Buttimer"
       ],
-      "one_sentence_summary": "A new €2 million fund has been launched to support community-led initiatives in Dublin's inner city, focusing on improving wellbeing, safety, and inclusion for residents.",
-      "justification": "The Inner City Dublin Fund represents a significant investment in community development, aiming to strengthen wellbeing and belonging for people living in the inner city, and is relevant to the target North Dublin communities.",
+      "one_sentence_summary": "A new €2 million fund has been launched to support community-led initiatives in inner city Dublin, focusing on improving wellbeing and inclusion for residents, particularly those affected by isolation, poor mental health, addiction, or exclusion.",
+      "justification": "This item is newsworthy as it announces a significant investment in community development in Dublin's inner city, which is adjacent to the target North Dublin zones, and has the potential to positively impact the wellbeing and quality of life of local residents.",
       "source": "Dublin People Northside West",
       "source_url": "https://dublinpeople.com/news/northsideeast/articles/2026/10/12/rethink-ireland-and-irish-life-partner-to-create-new-e2-million-fund/",
       "original_title": "Rethink Ireland and Irish Life partner to create new €2 million fund to support communities across inner city",
       "published_at": "2026-10-12T09:31:31.000Z",
-      "processed_at": "2026-10-17T16:15:33.925Z",
+      "processed_at": "2026-10-17T17:11:35.894Z",
       "image_url": "https://dublinpeople.com/wp-content/uploads/2026/10/8016bfee-7d97-4d68-a51f-3aa9fde9443d-300x199.jpg"
     },
     {
@@ -104,7 +102,7 @@
       "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/09/3-3-million-passengers-through-dublin-airport-in-september/",
       "original_title": "3.3 million passengers through Dublin Airport in September",
       "published_at": "2026-10-09T08:06:48.000Z",
-      "processed_at": "2026-10-17T16:15:35.347Z",
+      "processed_at": "2026-10-17T17:11:37.544Z",
       "image_url": null
     }
   ]
