@@ -4,10 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Tabloid</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;700&display=swap" rel="stylesheet">
+
 <style>
+/* 🚨 INJECTING THE GENUINE GUARDIAN HEADLINE WEB FONTS */
+@font-face {
+  font-family: 'GH Guardian Headline';
+  src: url('https://guim.co.uk') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GH Guardian Headline Bold';
+  src: url('https://guim.co.uk') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --bg-canvas: #f6f6f6;
   --guardian-blue: #005689;
@@ -24,14 +36,14 @@ html { background: var(--bg-canvas); }
 body {
   background: var(--bg-canvas);
   color: var(--text-body);
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
 }
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
 a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; }
 
-/* Masthead */
+/* Masthead - Using the brand serif font with signature Guardian casing rules */
 .masthead { background: var(--guardian-blue); color: #ffffff; }
 .masthead-inner {
   max-width: 1300px;
@@ -44,12 +56,13 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
   flex-wrap: wrap;
 }
 .logo {
-  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-family: 'GH Guardian Headline', Georgia, serif;
   font-weight: 700;
   font-size: clamp(2.6rem, 7vw, 4.6rem);
   line-height: 0.95;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
   color: #ffffff;
+  text-transform: lowercase; /* Replicates the iconic Guardian logo footprint */
 }
 .masthead-date {
   font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
@@ -63,8 +76,8 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
 .page { max-width: 1300px; margin: 0 auto; padding: 0 20px 40px; }
 .section { padding-top: 22px; }
 .section-title {
-  font-family: 'Lora', Georgia, serif;
-  font-size: 1.5rem;
+  font-family: 'GH Guardian Headline Bold', Georgia, serif;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--guardian-blue);
   letter-spacing: -0.3px;
@@ -109,16 +122,17 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
 .badge-events { color: var(--pillar-events); }
 .badge-sports { color: var(--pillar-sports); }
 
-/* Headlines: directly under the badge, tight and heavy */
+/* Headlines: mapped directly to our premium broadsheet fonts */
 .card-headline {
-  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-family: 'GH Guardian Headline Bold', Georgia, serif;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   line-height: 1.15;
   letter-spacing: -0.2px;
   color: var(--text-headline);
+  margin-top: 2px;
 }
-.card-lead .card-headline { font-size: 2.1rem; letter-spacing: -0.5px; }
+.card-lead .card-headline { font-size: 2.1rem; letter-spacing: -0.5px; line-height: 1.1; }
 
 .card-media { margin-top: 4px; }
 .card-media img {
@@ -128,7 +142,12 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
   object-fit: cover;
   background: var(--line-hairline);
 }
-.card-body { font-size: 0.98rem; line-height: 1.45; color: var(--text-body); }
+.card-body { 
+  font-size: 0.95rem; 
+  line-height: 1.5; 
+  color: var(--text-body);
+  font-family: system-ui, -apple-system, sans-serif; /* Clean sans body text for contrast */
+}
 
 .footer {
   max-width: 1300px;
@@ -151,7 +170,7 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
   .card, .card:first-child { padding-left: 0; padding-right: 0; }
   .card-lead .card-headline { font-size: 1.7rem; }
 }
-</style>
+  </style>
 </head>
 <body>
 <header class="masthead">
@@ -163,9 +182,58 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
 </header>
 <main class="page">
   
+    <section class="section">
+      <h3 class="section-title">Dublin local</h3>
+      <div class="grid-clip">
+        <div class="grid">
+          
+    <article class="card card-lead">
+      <span class="badge badge-news">1 NEWS</span>
+      <h2 class="card-headline"><a href="https://dublinpeople.com/news/northsidewest/articles/2026/10/09/3-3-million-passengers-through-dublin-airport-in-september/" target="_blank" rel="noopener">Not relevant to target North Dublin communities.</a></h2>
+      
+      <p class="card-body">Failed geographical boundary check, as the news article is about Dublin Airport, which is outside the specified North Dublin zones of Ballymun, Finglas, Glasnevin, and adjacent boundaries.</p>
+    </article>
+
+    <article class="card">
+      <span class="badge badge-news">1 NEWS</span>
+      <h2 class="card-headline"><a href="https://dublinpeople.com/news/northsideeast/articles/2026/10/12/rethink-ireland-and-irish-life-partner-to-create-new-e2-million-fund/" target="_blank" rel="noopener">A new €2 million fund has been launched to support community-led initiatives in Dublin's inner city, focusing on improving wellbeing, safety, and inclusion for residents.</a></h2>
+      <figure class="card-media"><img src="https://dublinpeople.com/wp-content/uploads/2026/10/8016bfee-7d97-4d68-a51f-3aa9fde9443d-300x199.jpg" alt="A new €2 million fund has been launched to support community-led initiatives in Dublin's inner city, focusing on improving wellbeing, safety, and inclusion for residents." loading="lazy"></figure>
+      <p class="card-body">The Inner City Dublin Fund represents a significant investment in community development, aiming to strengthen wellbeing and belonging for people living in the inner city, and is relevant to the target North Dublin communities.</p>
+    </article>
+
+    <article class="card">
+      <span class="badge badge-news">1 NEWS</span>
+      <h2 class="card-headline"><a href="https://dublinpeople.com/news/northsidewest/articles/2026/10/13/call-for-dublin-airport-terminal-3-solution/" target="_blank" rel="noopener">Not relevant to target North Dublin communities.</a></h2>
+      
+      <p class="card-body">Failed geographical boundary check, as the article discusses Dublin Airport, which is outside the specified North Dublin zones of Ballymun, Finglas, Glasnevin, and adjacent boundaries.</p>
+    </article>
+
+    <article class="card">
+      <span class="badge badge-news">5 POLITICIAN NOTICE</span>
+      <h2 class="card-headline"><a href="https://dublinpeople.com/news/northsidewest/articles/2026/10/14/hearne-eviction-ban/" target="_blank" rel="noopener">Social Democrats TD Rory Hearne calls for an eviction ban to address the homeless crisis, while Minister for Housing James Browne claims it would 'kill supply' and instead emphasizes the government's efforts to provide emergency accommodation and social housing</a></h2>
+      
+      <p class="card-body">This article matters to local residents in North Dublin as it discusses the government's response to the homeless crisis, a major issue affecting the community, and features a local TD's proposal for an eviction ban, which could have a significant impact on housing and homelessness in the area</p>
+    </article>
+
+    <article class="card">
+      <span class="badge badge-news">1 NEWS</span>
+      <h2 class="card-headline"><a href="https://dublinpeople.com/news/northsidewest/articles/2026/10/14/draiocht-25/" target="_blank" rel="noopener">Draíocht Theatre in Blanchardstown celebrates 25 years of operation, marking a significant milestone in providing cultural and artistic experiences to the local community.</a></h2>
+      
+      <p class="card-body">This article is newsworthy as it highlights a significant achievement of a local cultural institution, Draíocht Theatre, which has been serving the community for 25 years, and its impact on the local arts scene and community engagement.</p>
+    </article>
+
+    <article class="card">
+      <span class="badge badge-news">4 EDUCATION &amp; SPECIAL NEEDS</span>
+      <h2 class="card-headline"><a href="https://dublinpeople.com/news/northsidewest/articles/2026/10/15/inspiring-the-next-generation/" target="_blank" rel="noopener">Students from St David's College in Artane participated in Girls in Aviation Day, exploring career pathways in the aviation sector with United Airlines and Dublin Airport</a></h2>
+      <figure class="card-media"><img src="https://dublinpeople.com/wp-content/uploads/2026/10/14-new-aviation2-300x225.jpg" alt="Students from St David's College in Artane participated in Girls in Aviation Day, exploring career pathways in the aviation sector with United Airlines and Dublin Airport" loading="lazy"></figure>
+      <p class="card-body">This event promotes education and career opportunities for young women in the aviation sector, aligning with the education and special needs pillar, and has a direct impact on the North Dublin community through the involvement of local students from St David's College.</p>
+    </article>
+        </div>
+      </div>
+    </section>
   
-  <p class="empty">No stories yet. Run engine.js or local_engine.js, then publish again.</p>
+  
 </main>
-<footer class="footer">Last compiled 17/10/2026, 17:13:03</footer>
+<footer class="footer">Last compiled 17/10/2026, 17:53:21</footer>
 </body>
 </html>

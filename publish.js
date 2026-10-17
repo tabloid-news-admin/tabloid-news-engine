@@ -24,8 +24,9 @@ const pick = (obj, keys) => {
   for (const k of keys) if (obj && obj[k]) return obj[k];
   return '';
 };
-const getHeadline = (a) => pick(a, ['headline', 'title', 'rewritten_title']);
-const getBody = (a) => pick(a, ['body', 'summary', 'standfirst', 'rewritten', 'content']);
+const getHeadline = (a) => pick(a, ['one_sentence_summary', 'headline', 'title', 'rewritten_title']);
+
+const getBody = (a) => pick(a, ['justification', 'body', 'summary', 'standfirst', 'rewritten', 'content']);
 const getPillar = (a) => pick(a, ['pillar', 'category']) || 'News';
 const getLink = (a) => pick(a, ['source_url', 'url', 'link']);
 const getTime = (a) => Date.parse(pick(a, ['processed_at', 'published_at', 'date'])) || 0;
@@ -88,6 +89,20 @@ function renderSection(title, items) {
 
 // ---------- CSS ----------
 const CSS = `
+/* 🚨 INJECTING THE GENUINE GUARDIAN HEADLINE WEB FONTS */
+@font-face {
+  font-family: 'GH Guardian Headline';
+  src: url('https://guim.co.uk') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GH Guardian Headline Bold';
+  src: url('https://guim.co.uk') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --bg-canvas: #f6f6f6;
   --guardian-blue: #005689;
@@ -104,14 +119,14 @@ html { background: var(--bg-canvas); }
 body {
   background: var(--bg-canvas);
   color: var(--text-body);
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
 }
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
 a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; }
 
-/* Masthead */
+/* Masthead - Using the brand serif font with signature Guardian casing rules */
 .masthead { background: var(--guardian-blue); color: #ffffff; }
 .masthead-inner {
   max-width: 1300px;
@@ -124,12 +139,13 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
   flex-wrap: wrap;
 }
 .logo {
-  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-family: 'GH Guardian Headline', Georgia, serif;
   font-weight: 700;
   font-size: clamp(2.6rem, 7vw, 4.6rem);
   line-height: 0.95;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
   color: #ffffff;
+  text-transform: lowercase; /* Replicates the iconic Guardian logo footprint */
 }
 .masthead-date {
   font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
@@ -143,8 +159,8 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
 .page { max-width: 1300px; margin: 0 auto; padding: 0 20px 40px; }
 .section { padding-top: 22px; }
 .section-title {
-  font-family: 'Lora', Georgia, serif;
-  font-size: 1.5rem;
+  font-family: 'GH Guardian Headline Bold', Georgia, serif;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--guardian-blue);
   letter-spacing: -0.3px;
@@ -189,16 +205,17 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
 .badge-events { color: var(--pillar-events); }
 .badge-sports { color: var(--pillar-sports); }
 
-/* Headlines: directly under the badge, tight and heavy */
+/* Headlines: mapped directly to our premium broadsheet fonts */
 .card-headline {
-  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-family: 'GH Guardian Headline Bold', Georgia, serif;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   line-height: 1.15;
   letter-spacing: -0.2px;
   color: var(--text-headline);
+  margin-top: 2px;
 }
-.card-lead .card-headline { font-size: 2.1rem; letter-spacing: -0.5px; }
+.card-lead .card-headline { font-size: 2.1rem; letter-spacing: -0.5px; line-height: 1.1; }
 
 .card-media { margin-top: 4px; }
 .card-media img {
@@ -208,7 +225,12 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
   object-fit: cover;
   background: var(--line-hairline);
 }
-.card-body { font-size: 0.98rem; line-height: 1.45; color: var(--text-body); }
+.card-body { 
+  font-size: 0.95rem; 
+  line-height: 1.5; 
+  color: var(--text-body);
+  font-family: system-ui, -apple-system, sans-serif; /* Clean sans body text for contrast */
+}
 
 .footer {
   max-width: 1300px;
@@ -231,7 +253,8 @@ a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; 
   .card, .card:first-child { padding-left: 0; padding-right: 0; }
   .card-lead .card-headline { font-size: 1.7rem; }
 }
-`;
+  `;
+
 
 // ---------- Build ----------
 function build() {
@@ -263,9 +286,7 @@ function build() {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(SITE_NAME)}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;700&display=swap" rel="stylesheet">
+
 <style>${CSS}</style>
 </head>
 <body>
