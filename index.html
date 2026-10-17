@@ -1,231 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tabloid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-canvas: #f6f6f6;
+  --guardian-blue: #005689;
+  --text-headline: #121212;
+  --line-hairline: #dcdcdc;
+  --pillar-news: #c70000;
+  --pillar-events: #e05e00;
+  --pillar-sports: #0084c7;
+  --text-body: #333333;
+  --text-muted: #666666;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0; box-shadow: none; }
+html { background: var(--bg-canvas); }
+body {
+  background: var(--bg-canvas);
+  color: var(--text-body);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--guardian-blue); outline-offset: 2px; }
 
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The North Dublin Chronicle</title>
-    <!-- Importing high-end Guardian-replica serif and sans-serif Google web fonts -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-      :root {
-        --guardian-blue: #005689;
-        --guardian-dark-blue: #09314f;
-        --pillar-news: #c70000;
-        --pillar-events: #e05e00;
-        --pillar-sports: #0084c7;
-        --pillar-education: #7d00b3;
-        --bg-cream: #f6f6f6;
-        --text-dark: #121212;
-        --border-gray: #dfdfdf;
-      }
-      
-      body {
-        font-family: 'Open Sans', sans-serif;
-        background-color: var(--bg-cream);
-        color: var(--text-dark);
-        margin: 0;
-        padding: 0;
-      }
+/* Masthead */
+.masthead { background: var(--guardian-blue); color: #ffffff; }
+.masthead-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 18px 20px 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.logo {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: -1px;
+  color: #ffffff;
+}
+.masthead-date {
+  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding-bottom: 6px;
+}
+.masthead-rule { border-top: 1px solid rgba(255, 255, 255, 0.3); }
 
-      /* Masthead Styling replicating The Guardian layout structure */
-      header {
-        background-color: var(--guardian-blue);
-        color: white;
-        padding: 20px 40px;
-        border-bottom: 5px solid var(--guardian-dark-blue);
-      }
-      
-      .logo-area {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-      }
-      
-      header h1 {
-        font-family: 'Lora', serif;
-        font-size: 2.8rem;
-        font-weight: 700;
-        margin: 0;
-        letter-spacing: -1px;
-      }
-      
-      .date-badge {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 600;
-        opacity: 0.9;
-      }
+/* Page frame: flat continuous canvas */
+.page { max-width: 1300px; margin: 0 auto; padding: 0 20px 40px; }
+.section { padding-top: 22px; }
+.section-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--guardian-blue);
+  letter-spacing: -0.3px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-hairline);
+}
 
-      .main-container {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 30px 20px;
-      }
+/* Hairline grid: separation by borders only */
+.grid-clip { overflow: hidden; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-right: -1px;   /* hides the trailing right hairline */
+  margin-bottom: -1px;  /* hides the trailing bottom hairline */
+}
+.card {
+  background: transparent;
+  padding: 14px 16px 18px;
+  border-right: 1px solid var(--line-hairline);
+  border-bottom: 1px solid var(--line-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.card:first-child { padding-left: 0; }
+.card-lead { grid-column: span 2; }
 
-      .section-heading {
-        font-family: 'Lora', serif;
-        font-size: 1.6rem;
-        font-weight: 700;
-        color: var(--guardian-blue);
-        border-bottom: 2px solid var(--guardian-blue);
-        padding-bottom: 5px;
-        margin-top: 40px;
-        margin-bottom: 20px;
-      }
+/* Pillar badges: short colour rule + coloured label */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.badge::before { content: ''; display: block; width: 22px; height: 3px; background: currentColor; }
+.badge-news { color: var(--pillar-news); }
+.badge-events { color: var(--pillar-events); }
+.badge-sports { color: var(--pillar-sports); }
 
-      /* Asymmetrical 3-Column Newspaper Grid Layout Layout */
-      .news-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
-        gap: 24px;
-      }
+/* Headlines: directly under the badge, tight and heavy */
+.card-headline {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  letter-spacing: -0.2px;
+  color: var(--text-headline);
+}
+.card-lead .card-headline { font-size: 2.1rem; letter-spacing: -0.5px; }
 
-      @media (max-width: 900px) {
-        .news-grid { grid-template-columns: 1fr; }
-      }
+.card-media { margin-top: 4px; }
+.card-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  background: var(--line-hairline);
+}
+.card-body { font-size: 0.98rem; line-height: 1.45; color: var(--text-body); }
 
-      /* Card layouts carrying structural lines and top category headers */
-      .article-card {
-        background: white;
-        border-top: 4px solid var(--guardian-blue);
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      }
+.footer {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 16px 20px 40px;
+  border-top: 1px solid var(--line-hairline);
+  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.empty { padding: 40px 0; color: var(--text-muted); }
 
-      /* Assigning dynamic colors to your 5 local news pillars */
-      .article-card.news-pillar { border-top-color: var(--pillar-news); }
-      .article-card.events-pillar { border-top-color: var(--pillar-events); }
-      .article-card.sports-pillar { border-top-color: var(--pillar-sports); }
-      .article-card.education-pillar { border-top-color: var(--pillar-education); }
-      
-      .pillar-badge {
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-        color: var(--guardian-blue);
-      }
-      
-      .news-pillar .pillar-badge { color: var(--pillar-news); }
-      .events-pillar .pillar-badge { color: var(--pillar-events); }
-      .sports-pillar .pillar-badge { color: var(--pillar-sports); }
-      .education-pillar .pillar-badge { color: var(--pillar-education); }
-
-      .article-title {
-        font-family: 'Lora', serif;
-        font-size: 1.4rem;
-        font-weight: 700;
-        line-height: 1.25;
-        margin: 0 0 12px 0;
-        color: #000;
-      }
-
-      /* Lead story spans wider and has larger font sizing specs */
-      .news-grid .article-card:first-child {
-        grid-column: span 1;
-        background: #fff;
-      }
-      
-      .news-grid .article-card:first-child .article-title {
-        font-size: 1.9rem;
-      }
-
-      .article-body {
-        font-size: 0.95rem;
-        line-height: 1.55;
-        color: #333;
-        margin-bottom: 15px;
-      }
-
-      .meta-footer {
-        border-top: 1px solid var(--border-gray);
-        padding-top: 10px;
-        font-size: 0.8rem;
-        color: #666;
-        display: flex;
-        justify-content: space-between;
-      }
-      
-      .meta-footer a {
-        color: var(--guardian-blue);
-        text-decoration: none;
-        font-weight: 600;
-      }
-    </style>
-  </head>
-  <body>
-
-    <header>
-      <div class="logo-area">
-        <h1>the north dublin chronicle</h1>
-        <div class="date-badge">Saturday 17 October 2026</div>
-      </div>
-    </header>
-
-    <div class="main-container">
-      
-      <div class="section-heading">Ballymun, Finglas & Glasnevin Community Monitor</div>
-      
-      <div class="news-grid">
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .card-lead { grid-column: span 2; }
+}
+@media (max-width: 620px) {
+  .grid { grid-template-columns: 1fr; }
+  .card-lead { grid-column: span 1; }
+  .card, .card:first-child { padding-left: 0; padding-right: 0; }
+  .card-lead .card-headline { font-size: 1.7rem; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="logo">The Tabloid</div>
+    <div class="masthead-date">Saturday 17 October 2026</div>
+  </div>
+  <div class="masthead-rule"></div>
+</header>
+<main class="page">
   
-        <div class="article-card education-pillar">
-          <div>
-            <div class="pillar-badge">4 EDUCATION & SPECIAL NEEDS</div>
-            <img src="https://dublinpeople.com/wp-content/uploads/2026/10/14-new-aviation2-300x225.jpg" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 12px; border-bottom: 1px solid var(--border-gray);" alt="Local News Image"> <!-- Injects the captured source image right here -->
-            <h2 class="article-title">St David’s College in Artane partnered with United Airlines and Dublin Airport to inspire 28 girls to pursue careers in aviation and STEM on Girls in Aviation Day.</h2>
-            <p class="article-body">This event promotes education and career opportunities for young women in the aviation sector, which is relevant to the local community in North Dublin, particularly in the context of encouraging girls to explore STEM fields and consider future careers at Dublin Airport.</p>
-          </div>
-          <div class="meta-footer">
-            <span>Focus: <strong>St David’s College, United Airlines, Dublin Airport, Roger Berry, Gary McLean</strong></span>
-            <a href="https://dublinpeople.com/news/northsidewest/articles/2026/10/15/inspiring-the-next-generation/" target="_blank">View Source →</a>
-          </div>
-        </div>
-      
-        <div class="article-card events-pillar">
-          <div>
-            <div class="pillar-badge">2 EVENTS</div>
-             <!-- Injects the captured source image right here -->
-            <h2 class="article-title">Draíocht Theatre in Blanchardstown celebrates its 25th anniversary, marking a significant milestone in providing cultural events and activities to the local community.</h2>
-            <p class="article-body">This article is newsworthy as it highlights a significant cultural event in the North Dublin area, specifically the 25th anniversary of Draíocht Theatre, which has had a profound impact on the local community through its various programs and activities.</p>
-          </div>
-          <div class="meta-footer">
-            <span>Focus: <strong>Draíocht Theatre, Tony Murphy, Catherine Connolly, Veronica Coburn, Sinéad Diskin, Sibéal Davitt, Rory O'Byrne, Michael D. Higgins, Emer McGowan</strong></span>
-            <a href="https://dublinpeople.com/news/northsidewest/articles/2026/10/14/draiocht-25/" target="_blank">View Source →</a>
-          </div>
-        </div>
-      
-        <div class="article-card news-pillar">
-          <div>
-            <div class="pillar-badge">5 POLITICIAN NOTICE</div>
-             <!-- Injects the captured source image right here -->
-            <h2 class="article-title">Social Democrats TD Rory Hearne has called for an eviction ban to tackle the homeless crisis, which he describes as a 'disaster', in response to rising homeless figures in Ireland, including in North Dublin areas such as Ballymun and Finglas.</h2>
-            <p class="article-body">This item matters to local residents as it highlights the concerns of a local TD, Rory Hearne, regarding the homelessness crisis and its impact on the community, particularly in areas like Ballymun and Finglas, and the need for the government to take emergency action to address the issue.</p>
-          </div>
-          <div class="meta-footer">
-            <span>Focus: <strong>Rory Hearne, James Browne, Leo Varadkar</strong></span>
-            <a href="https://dublinpeople.com/news/northsidewest/articles/2026/10/14/hearne-eviction-ban/" target="_blank">View Source →</a>
-          </div>
-        </div>
-      
-        <div class="article-card news-pillar">
-          <div>
-            <div class="pillar-badge">1 NEWS</div>
-            <img src="https://dublinpeople.com/wp-content/uploads/2026/10/8016bfee-7d97-4d68-a51f-3aa9fde9443d-300x199.jpg" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 12px; border-bottom: 1px solid var(--border-gray);" alt="Local News Image"> <!-- Injects the captured source image right here -->
-            <h2 class="article-title">A new €2 million fund has been launched to support community-led initiatives in inner city Dublin, focusing on improving wellbeing and inclusion for residents, particularly those affected by isolation, poor mental health, and exclusion.</h2>
-            <p class="article-body">This item matters to local residents as it announces a significant investment in community development, aiming to create safer and more inclusive neighborhoods in Dublin's inner city, which is adjacent to the target North Dublin areas of Ballymun, Finglas, and Glasnevin.</p>
-          </div>
-          <div class="meta-footer">
-            <span>Focus: <strong>Rethink Ireland, Irish Life, Department of Rural and Community Development, Deirdre Mortell, Declan Bolger, Jerry Buttimer T.D.</strong></span>
-            <a href="https://dublinpeople.com/news/northsideeast/articles/2026/10/12/rethink-ireland-and-irish-life-partner-to-create-new-e2-million-fund/" target="_blank">View Source →</a>
-          </div>
-        </div>
-      
-      </div>
-    </div>
-  </body>
-  </html>
   
+  <p class="empty">No stories yet. Run engine.js or local_engine.js, then publish again.</p>
+</main>
+<footer class="footer">Last compiled 17/10/2026, 17:13:03</footer>
+</body>
+</html>
