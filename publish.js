@@ -201,16 +201,24 @@ function generateGuardianStylePaper() {
       </div>
     `;
   } else {
-    filteredLocal.forEach(art => {
+       filteredLocal.forEach(art => {
       let pClass = "news-pillar";
       if (art.pillar.includes("2")) pClass = "events-pillar";
       if (art.pillar.includes("3")) pClass = "sports-pillar";
       if (art.pillar.includes("4")) pClass = "education-pillar";
 
+      // 🚨 IMAGE EXTRACTION INJECTION START
+      let imageElement = '';
+      if (art.image_url && art.image_url !== '') {
+        imageElement = `<img src="${art.image_url}" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 12px; border-bottom: 1px solid var(--border-gray);" alt="Local News Image">`;
+      }
+      // 🚨 IMAGE EXTRACTION INJECTION END
+
       htmlContent += `
         <div class="article-card ${pClass}">
           <div>
             <div class="pillar-badge">${art.pillar}</div>
+            ${imageElement} <!-- Injects the captured source image right here -->
             <h2 class="article-title">${art.one_sentence_summary}</h2>
             <p class="article-body">${art.justification}</p>
           </div>
@@ -229,6 +237,7 @@ function generateGuardianStylePaper() {
   </body>
   </html>
   `;
+
 
   fs.writeFileSync('index.html', htmlContent);
   console.log("Success! Generated 'index.html' with full Guardian typography styling layout specs.");

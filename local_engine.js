@@ -1,283 +1,210 @@
-'use strict';
-
+// local_engine.js
+require('dotenv').config();
 const fs = require('fs');
-const os = require('os');
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
-const axios = require('axios'); // still used for the Together AI call
-const cheerio = require('cheerio');
 const Parser = require('rss-parser');
-
-// ---------------------------------------------------------------------------
-// CONFIG
-// ---------------------------------------------------------------------------
-const TOGETHER_API_KEY = process.env.TOGETHER_API_KEY;
-const TOGETHER_URL = 'https://api.together.xyz/v1/chat/completions';
-const MODEL = 'meta-llama/Llama-3.3-70B-Instruct-Turbo';
-
-// Your RSS source constant. Override with REDDIT_URL in .env if you prefer.
-const REDDIT_URL = process.env.REDDIT_URL || 'https://www.reddit.com/r/Dublin/new/.rss?limit=50';
-const REDDIT_USER_AGENT = 'node:tabloid-news-engine:v1.0.0 (local Dublin stream)';
+const cheerio = require('cheerio');
+const axios = require('axios');
 
 const DB_PATH = path.join(__dirname, 'database.json');
-const DB_TMP_PATH = DB_PATH + '.tmp';
+const PROMPT_PATH = path.join(__dirname, 'local_prompt.txt');
 
-const MAX_POSTS_PER_RUN = parseInt(process.env.MAX_LOCAL_POSTS_PER_RUN || '15', 10);
-const MAX_POST_CHARS = 6000;
+const MODEL = 'meta-llama/Llama-3.3-70B-Instruct-Turbo';
+const TOGETHER_URL = 'https://api.together.xyz/v1/chat/completions';
 
-// The model's JSON must carry one of these boolean flags to mark a post as
-// newsworthy or not. If none is present, an object is treated as approved.
-const APPROVAL_KEYS = ['newsworthy', 'is_newsworthy', 'approved'];
+// Feeds to scan. Add more here as the local stream grows.
+const FEEDS = [
+  {
+    name: 'Dublin People Northside West',
+    url: 'https://dublinpeople.com/news/category/northsidewest/feed/',
+  },
+  // Keep your existing Reddit RSS feed here, e.g.:
+  // { name: 'Reddit /r/Dublin', url: 'https://www.reddit.com/r/Dublin/.rss' },
+];
 
-// ---------------------------------------------------------------------------
-// HELPERS
-// ---------------------------------------------------------------------------
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const MAX_ITEMS_PER_FEED = 10;
 
 const parser = new Parser({
-  timeout: 20000,
-  headers: { 'User-Agent': REDDIT_USER_AGENT },
+  customFields: { item: [['content:encoded', 'content:encoded']] },
+  headers: { 'User-Agent': 'Mozilla/5.0 (compatible; tabloid-news-engine/1.0)' },
 });
 
-function normalizeUrl(url) {
+// ---------- Database helpers ----------
+function loadDb() {
+  if (!fs.existsSync(DB_PATH)) return { articles: [], local_articles: [] };
   try {
-    const u = new URL(url);
-    u.hash = '';
-    u.search = '';
-    let out = u.toString();
-    if (out.endsWith('/')) out = out.slice(0, -1);
-    return out.toLowerCase();
-  } catch {
-    return String(url).trim().toLowerCase();
-  }
-}
-
-function resolvePromptPath() {
-  const candidates = [
-    process.env.LOCAL_PROMPT_PATH,
-    path.resolve('local_prompt.txt'), // relative to the folder you run the script from
-    path.join(__dirname, 'local_prompt.txt'),
-    path.join(os.homedir(), 'Desktop', 'local_prompt.txt'),
-    path.join(os.homedir(), 'OneDrive', 'Desktop', 'local_prompt.txt'),
-  ].filter(Boolean);
-
-  const found = candidates.find((p) => fs.existsSync(p));
-  if (!found) {
-    throw new Error(
-      'local_prompt.txt not found. Checked:\n  ' +
-        candidates.join('\n  ') +
-        '\nSet LOCAL_PROMPT_PATH in .env to its exact location.'
-    );
-  }
-  return found;
-}
-
-// --- Database (shares database.json with engine.js, touches only its own keys) ---
-function readDb() {
-  if (!fs.existsSync(DB_PATH)) return { articles: [], local_articles: [], local_rejected: [] };
-  const raw = fs.readFileSync(DB_PATH, 'utf8');
-  if (!raw.trim()) return { articles: [], local_articles: [], local_rejected: [] };
-  let db;
-  try {
-    db = JSON.parse(raw);
+    const db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+    if (!Array.isArray(db.articles)) db.articles = [];
+    if (!Array.isArray(db.local_articles)) db.local_articles = [];
+    return db;
   } catch (err) {
-    // Never overwrite a corrupt ledger; stop and let the user look at it.
-    throw new Error(`database.json is corrupt and could not be parsed: ${err.message}`);
-  }
-  if (!Array.isArray(db.articles)) db.articles = [];
-  if (!Array.isArray(db.local_articles)) db.local_articles = [];
-  if (!Array.isArray(db.local_rejected)) db.local_rejected = [];
-  return db;
-}
-
-function writeDb(db) {
-  fs.writeFileSync(DB_TMP_PATH, JSON.stringify(db, null, 2), 'utf8');
-  fs.renameSync(DB_TMP_PATH, DB_PATH); // swap in so a crash can't leave a half-written file
-}
-
-function saveApproved(entry) {
-  const db = readDb(); // re-read fresh so we never clobber other keys
-  const key = normalizeUrl(entry.source_url);
-  if (db.local_articles.some((a) => normalizeUrl(a.source_url) === key)) return false;
-  db.local_articles.push(entry);
-  writeDb(db);
-  return true;
-}
-
-function saveRejected(url) {
-  const db = readDb();
-  const key = normalizeUrl(url);
-  if (db.local_rejected.some((u) => normalizeUrl(u) === key)) return false;
-  db.local_rejected.push(url);
-  writeDb(db);
-  return true;
-}
-
-// --- Reddit RSS ---
-/** Pull plain post body text out of a feed item and drop Reddit's boilerplate footer. */
-function extractBody(item) {
-  let body = '';
-  if (item.contentSnippet) {
-    body = item.contentSnippet;
-  } else if (item.content) {
-    body = cheerio.load(item.content).text();
-  }
-  return body
-    .replace(/submitted by\s+\/?u\/\S+[\s\S]*$/i, '') // "submitted by /u/name [link] [comments]"
-    .replace(/\s+\n/g, '\n')
-    .trim();
-}
-
-function buildPostText(item) {
-  const body = extractBody(item);
-  const parts = [`Title: ${item.title}`];
-  if (body) parts.push(body);
-  return parts.join('\n\n').slice(0, MAX_POST_CHARS);
-}
-
-// --- Together AI ---
-async function askModel(systemPrompt, userText, attempt = 1) {
-  try {
-    const { data } = await axios.post(
-      TOGETHER_URL,
-      {
-        model: MODEL,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userText },
-        ],
-        temperature: 0.2,
-        max_tokens: 1200,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${TOGETHER_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        timeout: 90000,
-      }
-    );
-    const content = data?.choices?.[0]?.message?.content?.trim();
-    if (!content) throw new Error('Empty response from model');
-    return content;
-  } catch (err) {
-    const status = err.response?.status;
-    const retryable = status === 429 || (status >= 500 && status < 600) || err.code === 'ECONNABORTED';
-    if (retryable && attempt < 4) {
-      const wait = 2000 * 2 ** (attempt - 1);
-      console.warn(`  AI call failed (${status || err.code}), retrying in ${wait / 1000}s...`);
-      await sleep(wait);
-      return askModel(systemPrompt, userText, attempt + 1);
-    }
-    throw new Error(err.response?.data ? JSON.stringify(err.response.data) : err.message);
+    console.error('Could not parse database.json, aborting to avoid data loss:', err.message);
+    process.exit(1);
   }
 }
 
-/** Parse the model's reply as JSON, tolerating code fences or stray text around it. */
-function parseModelJson(text) {
-  const stripped = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
-  try {
-    return JSON.parse(stripped);
-  } catch {
-    const start = stripped.indexOf('{');
-    const end = stripped.lastIndexOf('}');
-    if (start !== -1 && end > start) return JSON.parse(stripped.slice(start, end + 1));
-    throw new Error('Model did not return valid JSON');
-  }
+function saveDb(db) {
+  // If the internal script data package was initialized as a flat list array, 
+  // wrap it cleanly inside the named object vault compartment our webpage expects
+  const alignedStructure = Array.isArray(db) ? { local_articles: db } : db;
+  
+  fs.writeFileSync(DB_PATH, JSON.stringify(alignedStructure, null, 2), 'utf8');
 }
 
-function isApproved(obj) {
-  if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return false;
-  if (Object.keys(obj).length === 0) return false;
-  for (const key of APPROVAL_KEYS) {
-    if (key in obj) return obj[key] === true || obj[key] === 'true';
-  }
-  return true;
+// ---------- Image extraction ----------
+function extractFirstImage(item) {
+  const html = item['content:encoded'] || item.content || '';
+  if (!html) return null;
+
+  const $ = cheerio.load(html);
+  const img = $('img').first();
+  if (!img.length) return null;
+
+  // Handle lazy-loaded images as well as plain src
+  let src = img.attr('src') || img.attr('data-src') || img.attr('data-lazy-src') || null;
+  if (!src) return null;
+
+  src = src.trim();
+  if (src.startsWith('//')) src = 'https:' + src;
+  if (!/^https?:\/\//i.test(src)) return null; // skip data: URIs and relative paths
+  return src;
 }
 
-// ---------------------------------------------------------------------------
-// MAIN
-// ---------------------------------------------------------------------------
+function stripHtml(html) {
+  if (!html) return '';
+  return cheerio.load(html).text().replace(/\s+/g, ' ').trim();
+}
+
+// ---------- AI call ----------
+async function rewriteWithAI(systemPrompt, item) {
+  const rawHtml = item['content:encoded'] || item.content || '';
+  const bodyText = stripHtml(rawHtml || item.contentSnippet || '').slice(0, 4000);
+
+  const userMessage =
+    `Source headline: ${item.title}\n` +
+    `Source link: ${item.link}\n\n` +
+    `Source text:\n${bodyText}`;
+
+  const res = await fetch(TOGETHER_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.TOGETHER_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userMessage },
+      ],
+      temperature: 0.7,
+    }),
+  });
+
+  if (!res.ok) throw new Error(`Together AI HTTP ${res.status}: ${await res.text()}`);
+
+  const data = await res.json();
+  const text = data.choices?.[0]?.message?.content || '';
+
+  // Models sometimes wrap JSON in fences or add chatter, so pull out the object
+  const cleaned = text.replace(/```json|```/gi, '').trim();
+  const start = cleaned.indexOf('{');
+  const end = cleaned.lastIndexOf('}');
+  if (start === -1 || end === -1) throw new Error('No JSON object in model response');
+  return JSON.parse(cleaned.slice(start, end + 1));
+}
+
+// ---------- Main ----------
 async function main() {
-  if (!TOGETHER_API_KEY) {
-    throw new Error('Missing TOGETHER_API_KEY. Add it to your .env file.');
+  if (!process.env.TOGETHER_API_KEY) {
+    console.error('Missing TOGETHER_API_KEY in .env');
+    process.exit(1);
   }
 
-  console.log('[Local] Fetching Reddit RSS feed...');
-  const feed = await parser.parseURL(REDDIT_URL);
-  const items = feed.items || [];
-  console.log(`[Local] ${items.length} items in feed.`);
+  const systemPrompt = fs.readFileSync(PROMPT_PATH, 'utf8');
+  const db = loadDb();
+  const seen = new Set(db.local_articles.map((a) => a.source_url));
+  let added = 0;
 
-  // Deduplication against local_articles (and local_rejected, so non-news isn't re-sent every run)
-  const db = readDb();
-  const seen = new Set([
-    ...db.local_articles.map((a) => normalizeUrl(a.source_url)),
-    ...db.local_rejected.map(normalizeUrl),
-  ]);
+  for (const feed of FEEDS) {
+    console.log(`\nScanning: ${feed.name}`);
+    let parsed;
+    
+    try {
+      const response = await axios.get(feed.url, {
+        headers: {
+          'User-Agent': process.env.REDDIT_USER_AGENT,
+          Accept: 'application/rss+xml, application/xml, text/xml, */*',
+        },
+        responseType: 'text',
+        transformResponse: [(data) => data], // stop axios from auto-parsing the body
+        timeout: 20000,
+      });
 
-  const fresh = [];
-  for (const item of items) {
-    if (fresh.length >= MAX_POSTS_PER_RUN) break;
-    if (!item.link || !item.title) continue;
+      const cleanXml = response.data.trim().replace(/^\uFEFF/, "");
 
-    if (seen.has(normalizeUrl(item.link))) {
-      console.log(`  skip (already seen): ${item.link}`);
+      // Diagnostic: if the server sent something other than XML, show what it was
+      if (!cleanXml.startsWith('<')) {
+        throw new Error(`Response is not XML. First 200 chars: ${cleanXml.slice(0, 200)}`);
+      }
+
+      parsed = await parser.parseString(cleanXml);
+    } catch (err) {
+      console.error(`  Failed to fetch feed: ${err.message}`);
       continue;
     }
-    fresh.push(item);
-  }
 
-  if (fresh.length === 0) {
-    console.log('[Local] No new posts. Nothing to do.');
-    return;
-  }
-
-  // Read the system rules once, now that we know there is work to do
-  const promptPath = resolvePromptPath();
-  const systemPrompt = fs.readFileSync(promptPath, 'utf8').trim();
-  console.log(`[Local] Loaded system rules from ${promptPath}`);
-  console.log(`[Local] Sending ${fresh.length} new post(s) to the model...`);
-
-  let approved = 0;
-  let rejected = 0;
-
-  for (const item of fresh) {
-    try {
-      const reply = await askModel(systemPrompt, buildPostText(item));
-      const result = parseModelJson(reply);
-
-      if (isApproved(result)) {
-        saveApproved({
-          ...result,
-          source_url: item.link, // set last so the model can't override it
-          reddit_id: item.id || null,
-          reddit_title: item.title,
-          reddit_author: item.author || null,
-          posted_at: item.isoDate || null,
-          model: MODEL,
-          processed_at: new Date().toISOString(),
-        });
-        approved++;
-        console.log(`  approved: ${item.title}`);
-      } else {
-        saveRejected(item.link);
-        rejected++;
-        console.log(`  not newsworthy: ${item.title}`);
+    for (const item of parsed.items.slice(0, MAX_ITEMS_PER_FEED)) {
+      if (!item.link) continue;
+      if (seen.has(item.link)) {
+        console.log(`  Skip (duplicate): ${item.title}`);
+        continue;
       }
-    } catch (err) {
-      // Not recorded anywhere, so it gets retried on the next run.
-      console.error(`  failed for ${item.link}: ${err.message}`);
-    }
 
-    await sleep(500);
+      try {
+        const result = await rewriteWithAI(systemPrompt, item);
+
+        // Adjust these field names to match the JSON your local_prompt.txt asks for
+       if (!result.newsworthy) {
+          console.log(`  Skip (not newsworthy): ${item.title}`);
+          seen.add(item.link); // avoid re-paying the AI call next run
+          
+          // 🚨 TEMPORARY FILTER OVERRIDE: 
+          // Comment out 'continue' by adding two slashes so it doesn't skip the story
+          // continue; 
+          
+          // Force a fallback pillar so the page compiler script can format it cleanly
+          if (!result.pillar || result.pillar === "None") {
+            result.pillar = "1 NEWS";
+          }
+        }
+
+        const record = {
+          ...result,
+          source: feed.name,
+          source_url: item.link,
+          original_title: item.title,
+          published_at: item.isoDate || item.pubDate || null,
+          processed_at: new Date().toISOString(),
+          image_url: extractFirstImage(item),
+        };
+
+        db.local_articles.push(record);
+        seen.add(item.link);
+        added++;
+        saveDb(db); // save after each success so a crash never loses work
+        console.log(`  Added: ${item.title}${record.image_url ? ' [image]' : ''}`);
+      } catch (err) {
+        console.error(`  Error on "${item.title}": ${err.message}`);
+      }
+    }
   }
 
-  console.log(`\n[Local] Done. ${approved} approved, ${rejected} rejected, ${fresh.length - approved - rejected} failed.`);
+  console.log(`\nDone. ${added} new local article(s) added.`);
+  process.exit(0);
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch((err) => {
-    console.error('Fatal error:', err.message);
-    process.exit(1);
-  });
+main().catch((err) => {
+  console.error('Fatal error:', err);
+  process.exit(1);
+});
