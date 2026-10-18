@@ -8,7 +8,8 @@ const DB_PATH = path.join(__dirname, 'database.json');
 const PROMPT_PATH = path.join(__dirname, 'prompt.txt');
 
 const API_URL = 'https:' + '//' + 'openrouter.ai/api/v1/chat/completions';
-const API_KEY = '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'; // ◄— Make sure your active OpenRouter Key is pasted here!
+const API_KEY = process.env.OPENROUTER_API_KEY;
+// ◄— Make sure your active OpenRouter Key is pasted here!
 const MODEL = 'meta-llama/llama-3.3-70b-instruct';
 
 const FEEDS = [

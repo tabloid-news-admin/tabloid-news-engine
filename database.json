@@ -1,5 +1,100 @@
 {
-  "local_articles": [],
+  "local_articles": [
+    {
+      "is_newsworthy": true,
+      "pillar": "4 EDUCATION & SPECIAL NEEDS",
+      "entities_mentioned": [
+        "St David's College",
+        "United Airlines",
+        "Dublin Airport"
+      ],
+      "one_sentence_summary": "28 girls from St David's College in Artane participated in a unique experience at Dublin Airport to inspire the next generation of women in aviation and STEM careers.",
+      "justification": "This event promotes education and career opportunities for young women in the aviation sector, aligning with the education and special needs pillar, and has a direct impact on the local community in North Dublin.",
+      "source": "Dublin People Northside West",
+      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/15/inspiring-the-next-generation/",
+      "original_title": "Inspiring the next generation",
+      "published_at": "2026-10-15T08:52:36.000Z",
+      "processed_at": "2026-10-18T18:03:32.740Z",
+      "image_url": "https://dublinpeople.com/wp-content/uploads/2026/10/14-new-aviation2-300x225.jpg"
+    },
+    {
+      "is_newsworthy": false,
+      "pillar": "1 NEWS",
+      "entities_mentioned": [],
+      "one_sentence_summary": "Not relevant to target North Dublin communities.",
+      "justification": "Failed geographical boundary check, as the event took place in Blanchardstown, which is outside the specified North Dublin zones of Ballymun, Finglas, Glasnevin, and adjacent boundaries.",
+      "source": "Dublin People Northside West",
+      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/14/draiocht-25/",
+      "original_title": "Draíocht celebrates 25 years in operation",
+      "published_at": "2026-10-14T07:18:46.000Z",
+      "processed_at": "2026-10-18T18:03:33.551Z",
+      "image_url": null
+    },
+    {
+      "is_newsworthy": true,
+      "pillar": "5 POLITICIAN NOTICE",
+      "entities_mentioned": [
+        "Rory Hearne",
+        "James Browne",
+        "Leo Varadkar"
+      ],
+      "one_sentence_summary": "Social Democrats TD Rory Hearne calls for an eviction ban to address the homeless crisis in Ireland, which he describes as a 'disaster', while Minister for Housing James Browne argues that such a ban would 'kill supply'",
+      "justification": "This item matters to local residents in North Dublin as it discusses the homeless crisis and potential solutions, with local TD Rory Hearne proposing an eviction ban, which could impact the community's housing situation and social services.",
+      "source": "Dublin People Northside West",
+      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/14/hearne-eviction-ban/",
+      "original_title": "Eviction ban needed to stop homeless “disaster” says Hearne",
+      "published_at": "2026-10-14T07:18:38.000Z",
+      "processed_at": "2026-10-18T18:03:34.667Z",
+      "image_url": null
+    },
+    {
+      "is_newsworthy": false,
+      "pillar": "1 NEWS",
+      "entities_mentioned": [],
+      "one_sentence_summary": "Not relevant to target North Dublin communities.",
+      "justification": "Failed geographical boundary check as the content is about Dublin Airport, which is outside the specified North Dublin zones of Ballymun, Finglas, Glasnevin, and adjacent boundaries.",
+      "source": "Dublin People Northside West",
+      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/13/call-for-dublin-airport-terminal-3-solution/",
+      "original_title": "Call for Dublin Airport Terminal 3 solution",
+      "published_at": "2026-10-13T09:31:20.000Z",
+      "processed_at": "2026-10-18T18:03:35.431Z",
+      "image_url": null
+    },
+    {
+      "is_newsworthy": true,
+      "pillar": "1 NEWS",
+      "entities_mentioned": [
+        "Rethink Ireland",
+        "Irish Life",
+        "Department of Rural and Community Development",
+        "Gaeltacht",
+        "Deirdre Mortell",
+        "Declan Bolger",
+        "Jerry Buttimer"
+      ],
+      "one_sentence_summary": "Rethink Ireland and Irish Life have launched a new €2 million fund to support community-led initiatives in inner city Dublin, aiming to improve wellbeing and inclusion for marginalized groups",
+      "justification": "This item is newsworthy because it announces a significant investment in community development initiatives in inner city Dublin, which is within the target geography, and aligns with the critical processing filter rules by focusing on concrete, community-level news",
+      "source": "Dublin People Northside West",
+      "source_url": "https://dublinpeople.com/news/northsideeast/articles/2026/10/12/rethink-ireland-and-irish-life-partner-to-create-new-e2-million-fund/",
+      "original_title": "Rethink Ireland and Irish Life partner to create new €2 million fund to support communities across inner city",
+      "published_at": "2026-10-12T09:31:31.000Z",
+      "processed_at": "2026-10-18T18:03:36.727Z",
+      "image_url": "https://dublinpeople.com/wp-content/uploads/2026/10/8016bfee-7d97-4d68-a51f-3aa9fde9443d-300x199.jpg"
+    },
+    {
+      "is_newsworthy": false,
+      "pillar": "1 NEWS",
+      "entities_mentioned": [],
+      "one_sentence_summary": "Not relevant to target North Dublin communities.",
+      "justification": "Failed geographical boundary check, as Dublin Airport is outside the specified North Dublin zones of Ballymun, Finglas, Glasnevin, and adjacent boundaries.",
+      "source": "Dublin People Northside West",
+      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/09/3-3-million-passengers-through-dublin-airport-in-september/",
+      "original_title": "3.3 million passengers through Dublin Airport in September",
+      "published_at": "2026-10-09T08:06:48.000Z",
+      "processed_at": "2026-10-18T18:03:37.492Z",
+      "image_url": null
+    }
+  ],
   "articles": [
     {
       "headline": "Investigation after man dies following assault in Dublin",

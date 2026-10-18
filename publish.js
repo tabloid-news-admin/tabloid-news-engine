@@ -15,7 +15,7 @@ function compile() {
   const db = readDb();
   const formattedDate = new Date().toLocaleDateString('en-IE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-  // 1. GENERATE LOCAL NEWS STREAM
+  // 1. GENERATE LOCAL NEWS TRACK GRID
   let localHtml = '';
   const localArticles = db.local_articles || [];
   if (localArticles.length === 0) {
@@ -33,7 +33,7 @@ function compile() {
     });
   }
 
-  // 2. GENERATE NATIONAL TABLOID SIDEBAR STREAM
+  // 2. GENERATE NATIONAL TABLOID SIDEBAR TRACK (FORCING AI SCREAMING HEADLINES)
   let tabloidHtml = '';
   const nationalArticles = db.articles || [];
   if (nationalArticles.length === 0) {
@@ -42,14 +42,33 @@ function compile() {
     nationalArticles.forEach(art => {
       let imgPath = art.image_url || art.image || '';
       let media = imgPath ? '<div class="card-media"><img src="' + imgPath + '"></div>' : '';
-      let bodyText = art.content || art.body || art.article_text || '';
-      if (bodyText.length > 140) bodyText = bodyText.substring(0, 137) + '...';
+      
+      // Extract the raw text returned by the OpenRouter AI model
+      let rawAiOutput = art.content || '';
+      let displayHeadline = '';
+      let displayBody = '';
 
-      tabloidHtml += '<div class="card"><div class="badge" style="color:var(--pillar-tabloid)">NATIONAL DIGEST</div>' + media + '<h2 class="card-headline"><a href="' + (art.url || '#') + '" target="_blank">' + (art.headline || art.title || 'Tabloid Rumour') + '</a></h2><p class="card-body">' + bodyText + '</p></div>';
+      // Tabloid models print the SCREAMING HEADLINE on the very first line.
+      // We cleanly split the string by newlines to extract it.
+      let textLines = rawAiOutput.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      
+      if (textLines.length > 0) {
+        // Force the first line to be entirely ALL-CAPS screaming format
+        displayHeadline = textLines[0].toUpperCase();
+        // Re-assemble the remaining text lines as the article summary body paragraphs
+        displayBody = textLines.slice(1).join(' ');
+      } else {
+        displayHeadline = (art.headline || 'TABLOID BRIEFING').toUpperCase();
+        displayBody = rawAiOutput;
+      }
+
+      if (displayBody.length > 140) displayBody = displayBody.substring(0, 137) + '...';
+
+      tabloidHtml += '<div class="card"><div class="badge" style="color:var(--pillar-tabloid)">NATIONAL DIGEST</div>' + media + '<h2 class="card-headline"><a href="' + (art.url || '#') + '" target="_blank">' + displayHeadline + '</a></h2><p class="card-body">' + displayBody + '</p></div>';
     });
   }
 
-  // 3. COMPILE LINKED EXTERNAL STYLE SHEET BASELINE HTML
+  // 3. COMPILE LINKED MODULE STRUCTURE HTML
   let html = '<!DOCTYPE html><html lang="en-IE"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The North Dublin Chronicle</title><link rel="stylesheet" href="style.css"></head><body>';
   html += '<div class="masthead"><div class="masthead-inner"><div class="logo">the chronicle</div><div class="masthead-date">' + formattedDate + '</div></div></div>';
   html += '<div class="page"><div class="main-layout-grid">';
@@ -58,6 +77,6 @@ function compile() {
   html += '</div></div></body></html>';
 
   fs.writeFileSync(OUTPUT_PATH, html, 'utf8');
-  console.log('Success! Compiled hybrid media framework cleanly using external style links.');
+  console.log('Success! Compiled hybrid media layout forcing AI Screaming Headlines.');
 }
 compile();
