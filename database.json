@@ -1,109 +1,75 @@
 {
-  "articles": [],
-  "local_articles": [
+  "local_articles": [],
+  "articles": [
     {
-      "is_newsworthy": true,
-      "pillar": "4 EDUCATION & SPECIAL NEEDS",
-      "entities_mentioned": [
-        "St David’s College",
-        "United Airlines",
-        "Dublin Airport"
-      ],
-      "one_sentence_summary": "St David’s College in Artane partnered with United Airlines and Dublin Airport to inspire 28 girls to consider careers in aviation and STEM fields on Girls in Aviation Day.",
-      "justification": "This event promotes education and career opportunities for young women in North Dublin, specifically in the fields of aviation and STEM, which is relevant to the local community and aligns with the education and special needs pillar.",
-      "source": "Dublin People Northside West",
-      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/15/inspiring-the-next-generation/",
-      "original_title": "Inspiring the next generation",
-      "published_at": "2026-10-15T08:52:36.000Z",
-      "processed_at": "2026-10-17T17:11:26.680Z",
-      "image_url": "https://dublinpeople.com/wp-content/uploads/2026/10/14-new-aviation2-300x225.jpg"
+      "headline": "Investigation after man dies following assault in Dublin",
+      "content": "DUBLIN'S STREETS OF SHAME: MAN KILLED IN BRUTAL ATTACK AS LAW AND ORDER CRUMBLES!\n\nAnother life has been tragically snuffed out on Dublin's increasingly dangerous streets, as Jamie Bailey, a man in his 30s originally from Limerick, was found with fatal injuries on Blackhorse Avenue in the early hours. This horrific incident, now a full-blown murder investigation, exposes the terrifying reality of a capital city spiralling into chaos, where citizens are left vulnerable while Gardaí struggle to keep pace with rampant crime. Reports suggest this brutal assault may be linked to a prior incident, highlighting a disturbing pattern of violence that Leinster House elites and soft-on-crime progressive politicians continue to ignore. A bystander found Mr. Bailey and alerted emergency services, but it was too late; he was pronounced dead at the Mater Hospital. While forensic teams scour the scene and Gardaí conduct door-to-door enquiries from the Bridewell Garda Station, hard-working families are left wondering when their communities will be safe again from the escalating lawlessness gripping our nation.",
+      "url": "https://www.rte.ie/news/2026/1018/1595844-blackhorse-ave-dublin/",
+      "image_url": "https://www.rte.ie/images/002531a8-1600.jpg",
+      "scraped_at": "2026-10-18T17:40:33.435Z"
     },
     {
-      "is_newsworthy": true,
-      "pillar": "2 EVENTS",
-      "entities_mentioned": [
-        "Draíocht Theatre",
-        "Tony Murphy",
-        "Catherine Connolly",
-        "Veronica Coburn",
-        "Sinéad Diskin",
-        "Sibéal Davitt",
-        "Rory O'Byrne",
-        "Michael D. Higgins",
-        "Emer McGowan"
-      ],
-      "one_sentence_summary": "Draíocht Theatre in Blanchardstown celebrates 25 years of operation, marking a significant milestone in providing cultural and artistic experiences to the local community.",
-      "justification": "This item is newsworthy as it highlights a significant anniversary of a local arts centre, which has had a profound impact on the community, and features notable attendees and speakers, including the Mayor of Fingal County Council and the President of Ireland.",
-      "source": "Dublin People Northside West",
-      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/14/draiocht-25/",
-      "original_title": "Draíocht celebrates 25 years in operation",
-      "published_at": "2026-10-14T07:18:46.000Z",
-      "processed_at": "2026-10-17T17:11:29.486Z",
-      "image_url": null
+      "headline": "Four dead, dozens injured in fire at Canada military base",
+      "content": "CANADIAN MILITARY IN SHAMBLES: FOUR DEAD, DOZENS MAIMED IN BASE BLAZE AS HOSPITALS COLLAPSE!\n\nA gut-wrenching inferno at Canadian Forces Base Wainwright in Alberta has left four service members dead and scores more gravely injured, exposing a catastrophic failure within the nation's military ranks. Prime Minister Mark Carney, sounding all the right notes of grief while offering precious little in the way of answers, called it one of Canada's worst peacetime military tragedies on home soil. While Carney confirmed families of the fallen have been notified, the shocking reality is that hospitals as far as Edmonton, 200km away, were \"completely overwhelmed\" by the sheer volume of casualties, a damning indictment of Canada's readiness and infrastructure. Initial reports from state broadcaster CBC even suggested a higher death toll of seven, with the defence department shamefully unable to confirm full casualty details. As raging winds turned the base into a fiery hellscape, with flames leaping into surrounding rural areas, ordinary Canadians are left wondering how such a disaster could unfold and why their frontline services are being pushed to breaking point.",
+      "url": "https://www.rte.ie/news/world/2026/1018/1595810-canada-fire/",
+      "image_url": "https://www.rte.ie/images/002530d0-1600.jpg",
+      "scraped_at": "2026-10-18T17:40:37.052Z"
     },
     {
-      "is_newsworthy": true,
-      "pillar": "5 POLITICIAN NOTICE",
-      "entities_mentioned": [
-        "Rory Hearne",
-        "James Browne",
-        "Leo Varadkar"
-      ],
-      "one_sentence_summary": "Social Democrats TD Rory Hearne calls for an eviction ban to address the homeless crisis, contradicting Minister for Housing James Browne's stance on the issue, which affects North Dublin communities",
-      "justification": "This item matters to local residents as it discusses a proposal by a local TD to address the homeless crisis, which is a significant issue in North Dublin, and highlights the differing opinions of local politicians on how to tackle the problem.",
-      "source": "Dublin People Northside West",
-      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/14/hearne-eviction-ban/",
-      "original_title": "Eviction ban needed to stop homeless “disaster” says Hearne",
-      "published_at": "2026-10-14T07:18:38.000Z",
-      "processed_at": "2026-10-17T17:11:32.291Z",
-      "image_url": null
+      "headline": "Respects paid to family at church after Waterford attack",
+      "content": "ARSON HORROR: WATERFORD MOURNS FAMILY SLAUGHTERED IN THEIR BEDS!\n\nHundreds of heartbroken citizens descended on Waterford's Sacred Heart Church this afternoon, a community shattered as the bodies of Kim and Phillip English, and their innocent sons Callum and Jayden, lie in repose. The bustling streets of The Folly fell into a stunned silence as four coffins – two stark white for the children, two wood veneer for their parents – arrived by hearse, a grim testament to the horrific arson attack that ripped through their Birchwood estate home on Tuesday morning. Twelve-year-old Callum, a league title winner with Johnville FC, and nine-year-old Jayden were cruelly taken alongside their parents in an act of pure evil. As the coffins entered the church, a silent guard of honour from Johnville FC stood as a stark reminder of the vibrant young lives extinguished. Parish Priest Fr. Gerry Chestnutt received the family, prayers offered before their bodies were moved to the adjoining parish centre where a devastated community will pay its respects for hours to come, demanding justice for this unspeakable tragedy.",
+      "url": "https://www.rte.ie/news/ireland/2026/1018/1595863-waterford-english-family/",
+      "image_url": "https://www.rte.ie/images/00253179-1600.jpg",
+      "scraped_at": "2026-10-18T17:40:39.280Z"
     },
     {
-      "is_newsworthy": false,
-      "pillar": "1 NEWS",
-      "entities_mentioned": [],
-      "one_sentence_summary": "Not relevant to target North Dublin communities.",
-      "justification": "Failed geographical boundary check, as the article discusses Dublin Airport, which is outside the specified North Dublin zones of Ballymun, Finglas, Glasnevin, and adjacent boundaries.",
-      "source": "Dublin People Northside West",
-      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/13/call-for-dublin-airport-terminal-3-solution/",
-      "original_title": "Call for Dublin Airport Terminal 3 solution",
-      "published_at": "2026-10-13T09:31:20.000Z",
-      "processed_at": "2026-10-17T17:11:33.209Z",
-      "image_url": null
+      "headline": "1,800 arrested amid clashes, looting in French protests",
+      "content": "FRENCH CITIES ENGULFED IN CHAOS: 1,800 ARRESTED AS LEFTIST RIOTS DEVASTATE STREETS!\n\nFrance has been plunged into anarchy, with cities across the nation waking up to scenes of utter devastation after clashes between police and radical left-wing protesters spiraled into mass looting, arson, and \"extreme\" violence. This nationwide rampage, fueled by weeks of student unrest and progressive agitators, comes just six months before crucial elections. Paris Deputy Mayor Emmanuel Gregoire admitted entire streets have been \"devastated\" as masked thugs torched vehicles and ransacked businesses, while Interior Minister Laurent Nunez confirmed a staggering 1,800 arrests. Prime Minister Sebastien Lecornu rightly condemned the \"extreme intensity\" of the violence, revealing over 150 police officers were injured—a \"miracle the toll isn't higher,\" he stated. What began as protests over the cost of living, with turnout figures hotly disputed by the CGT union claiming 800,000 against the interior ministry's 550,000, quickly devolved into an anti-establishment free-for-all orchestrated by those who seek to undermine civic order. President Macron is set to address the nation tonight, but for many hard-working French citizens, the damage is already done, leaving them to pick up the pieces while the progressive elites offer excuses for the chaos.",
+      "url": "https://www.rte.ie/news/europe/2026/1018/1595835-france-protest-clashes/",
+      "image_url": "https://www.rte.ie/images/002530d7-1600.jpg",
+      "scraped_at": "2026-10-18T17:40:41.869Z"
     },
     {
-      "is_newsworthy": true,
-      "pillar": "1 NEWS",
-      "entities_mentioned": [
-        "Rethink Ireland",
-        "Irish Life",
-        "Department of Rural and Community Development",
-        "Gaeltacht",
-        "Deirdre Mortell",
-        "Declan Bolger",
-        "Jerry Buttimer"
-      ],
-      "one_sentence_summary": "A new €2 million fund has been launched to support community-led initiatives in inner city Dublin, focusing on improving wellbeing and inclusion for residents, particularly those affected by isolation, poor mental health, addiction, or exclusion.",
-      "justification": "This item is newsworthy as it announces a significant investment in community development in Dublin's inner city, which is adjacent to the target North Dublin zones, and has the potential to positively impact the wellbeing and quality of life of local residents.",
-      "source": "Dublin People Northside West",
-      "source_url": "https://dublinpeople.com/news/northsideeast/articles/2026/10/12/rethink-ireland-and-irish-life-partner-to-create-new-e2-million-fund/",
-      "original_title": "Rethink Ireland and Irish Life partner to create new €2 million fund to support communities across inner city",
-      "published_at": "2026-10-12T09:31:31.000Z",
-      "processed_at": "2026-10-17T17:11:35.894Z",
-      "image_url": "https://dublinpeople.com/wp-content/uploads/2026/10/8016bfee-7d97-4d68-a51f-3aa9fde9443d-300x199.jpg"
+      "headline": "Martin: Public sector pay deal must be 'value for money'",
+      "content": "PUBLIC SECTOR PAY DEAL: TAXPAYERS DEMAND VALUE, NOT MORE GRAVY TRAIN BLOWOUTS!\n\nTaoiseach Micheál Martin has finally uttered the words \"value for money\" regarding the looming public sector pay deal, a mere whisper after weeks of a national strike that crippled services and held ordinary citizens hostage. After 300,000 public workers staged a walkout—a move that reeked of entitlement—the government and unions are now heading to the Workplace Relations Commission for \"formal discussions.\" Martin, speaking from a Fianna Fáil commemoration, meekly welcomed this \"process,\" but the real question remains: will the Leinster House elites finally rein in the bloated Civil Service gravy train, or will taxpayers be fleeced yet again? Unions are brazenly demanding a €2 billion package, far exceeding the €1.2 billion already earmarked in the budget, with suggestions the coalition might dip into a €1.6 billion unallocated pot. Martin dodged questions on whether this bottomless pit of taxpayer cash will be plundered, only vaguely gesturing towards \"greater productivity\"—a concept often alien to the public sector. It’s time for action, not platitudes, to ensure hard-working families aren't left footing the bill for a system that consistently prioritises its own over the public it supposedly serves.",
+      "url": "https://www.rte.ie/news/ireland/2026/1018/1595801-public-sector-pay-deal/",
+      "image_url": "https://www.rte.ie/images/00252b2b-1600.jpg",
+      "scraped_at": "2026-10-18T17:40:44.563Z"
     },
     {
-      "is_newsworthy": false,
-      "pillar": "1 NEWS",
-      "entities_mentioned": [],
-      "one_sentence_summary": "Not relevant to target North Dublin communities.",
-      "justification": "Failed geographical boundary check, as the news article is about Dublin Airport, which is outside the specified North Dublin zones of Ballymun, Finglas, Glasnevin, and adjacent boundaries.",
-      "source": "Dublin People Northside West",
-      "source_url": "https://dublinpeople.com/news/northsidewest/articles/2026/10/09/3-3-million-passengers-through-dublin-airport-in-september/",
-      "original_title": "3.3 million passengers through Dublin Airport in September",
-      "published_at": "2026-10-09T08:06:48.000Z",
-      "processed_at": "2026-10-17T17:11:37.544Z",
-      "image_url": null
+      "headline": "Meet the teen stars chosen to represent Ireland at this year&apos;s Junior Eurovision",
+      "content": "JUNIOR EUROVISION HOPEFULS JET OFF TO MALTA AS IRELAND PINSES HOPES ON TALENTED TEEN DUO\n\nIn a heartwarming display of Irish talent, 14-year-old Caleb Kirwan from Leopardstown and 13-year-old Naomi Gribben from Mayobridge are gearing up to represent our great nation at the Junior Eurovision grand final in Malta. This dynamic duo, the only act of its kind competing in the annual competition, is set to take the stage by storm with their powerful song Níos Láidre. Flying out of Dublin Airport, Caleb and Naomi are the epitome of Irish spirit and determination, embodying the values of hard work and passion that our country was built upon. \n\nAs they prepare to take the 13th spot in the running order, these young artists are proving that with dedication and natural talent, anything is possible. Caleb, an accomplished performer with years of training in singing, dancing, and acting, and Naomi, a singing sensation with a family legacy of musical talent, are the perfect representation of Ireland's thriving arts scene. Their surprise victory in Junior Eurovision Éire is a testament to their abilities, and their selection by the jury is a nod to the excellence that Ireland has to offer. \n\nWith the eyes of the nation on them, Caleb and Naomi are ready to shine, and we couldn't be prouder to call them our own. As they take the stage in Malta, they will be carrying the hopes and dreams of a nation, and we have no doubt that they will make us proud. So let's get behind these talented teens and show them the support they deserve as they embark on this incredible journey.",
+      "url": "https://www.dublinlive.ie/news/meet-teen-stars-chosen-represent-34782703",
+      "image_url": "https://i2-prod.dublinlive.ie/article34782701.ece/ALTERNATES/s1200d/0_Naomi-Gribben-Caleb-Kirwan-head-to-Malta-for-Junior-Eurovision-2026-final-Credit-Bryan-Brophy.jpg",
+      "scraped_at": "2026-10-18T17:51:32.727Z"
+    },
+    {
+      "headline": "Two dead including child after truck ploughs into pitch at youth football game in Kansas",
+      "content": "**TRUCK TERROR: 2 DEAD, 11 INJURED AS VEHICLE PLOWS INTO KIDS' FOOTBALL GAME IN KANSAS**\n\nA horrific tragedy unfolded in Wichita, Kansas, when a truck drove onto a football pitch during a youth sports event, leaving a six-year-old boy and a 35-year-old man dead. The senseless carnage also injured 11 others, including five children, who were rushed to hospital with injuries ranging from bruises to severe trauma. The victims' ages spanned from five to 68, a stark reminder of the devastating impact of this reckless incident on innocent families. \n\nAs the investigation continues, a 34-year-old woman is in custody, and authorities are working to determine whether the incident was intentional. Police Captain Aaron Moses praised the bravery of bystanders who rushed to assist the victims, providing lifesaving aid before emergency services arrived. The fact that two children were also present in the truck at the time of the incident raises further questions about the events leading up to this tragedy. \n\nThe people of Kansas demand answers, and it's time for the authorities to get to the bottom of this shocking incident. The community will be left to pick up the pieces and mourn the loss of two innocent lives, including a young child who had their whole life ahead of them.",
+      "url": "https://www.dublinlive.ie/news/world-news/two-dead-including-child-after-34782478",
+      "image_url": "https://i2-prod.dublinlive.ie/article34778099.ece/ALTERNATES/s1200d/0_BR050422crime_scenePAG-6.jpg",
+      "scraped_at": "2026-10-18T17:51:39.241Z"
+    },
+    {
+      "headline": "Four family members killed in arson attack arrive at church ahead of funeral",
+      "content": "**TRAGEDY STRIKES: FOUR INNOCENT LIVES LOST IN WATERFORD ARSON ATTACK**\n\nThe devastated community of Waterford has been left reeling as four hearses carrying the coffins of Philip and Kim English and their young sons, Jayden and Callum, arrived at the Sacred Heart Church Parish Centre ahead of their heartbreaking funeral. The family's lives were brutally cut short in a senseless arson attack on their home in the Birchwood estate, leaving two other children fighting for their lives in hospital. As the coffins were removed from the hearses, the church bell tolled, and players from the Johnville football club, where Callum played, stood guard in a poignant tribute to the young boy's memory. The four wooden coffins, adorned with an Irish tricolour flag on one, were lined up side by side, a stark reminder of the tragedy that has shaken the nation. The parish priest, Father Gerry Chestnutt, received the bodies into the church, where they will lie in repose for three hours before the funeral mass on Monday afternoon. The community will come together to bid a final farewell to the English family, who will be laid to rest in Kilbarry Cemetery, their lives lost in a tragic event that has left an indelible mark on the people of Waterford.",
+      "url": "https://www.dublinlive.ie/news/four-family-members-killed-arson-34782384",
+      "image_url": "https://i2-prod.dublinlive.ie/article34782389.ece/ALTERNATES/s1200d/1_01M57KCB05G9NVX47HKPF3XPCG.jpg",
+      "scraped_at": "2026-10-18T17:51:55.299Z"
+    },
+    {
+      "headline": "Formal talks on public sector pay deal expected to begin",
+      "content": "PAY TALKS SHAMBLES: Government Finally Forced to Negotiate with Unions After Strike Chaos\n\nThe Irish government has been dragged to the negotiating table after a crippling 24-hour strike by over 300,000 public sector workers, including nurses, doctors, teachers, and civil servants, brought the country to a standstill. The strike, sparked by the government's dithering on a new public sector pay deal, has exposed the systemic rot at the heart of the Civil Service gravy train. Minister of State Sean Canney is now desperately hoping that formal talks, set to begin on Monday, will yield a deal \"in the not too distant future\" to placate the unions and avoid further disruption.\n\nBut Sinn Féin TD Claire Kerrane has slammed the government's handling of the crisis, branding it a \"mess of their own making\". The opposition party's criticism is a stark reminder that the government's incompetence has left working-class communities abandoned and struggling to make ends meet. The suspension of a second planned strike has given the government a temporary reprieve, but the underlying issues remain, and the unions are demanding concrete action to address the pay gap.\n\nAs the talks get underway, the government will be under pressure to deliver a deal that doesn't fleece the taxpayer, while also meeting the demands of public sector workers who have been left behind by the government's tax-and-spend policies. The appointment of an independent third party, Kevin Foley, to facilitate the negotiations is a belated attempt to inject some semblance of fairness into the process. With €1.2 billion set aside for the pay deal in the Budget, the government must now demonstrate its willingness to listen to the concerns of hard-pressed public sector workers and find a solution that doesn't burden the already overstretched taxpayer. The clock is ticking, and the government's inability to get its house in order has brought the country to the brink of chaos.",
+      "url": "https://www.dublinlive.ie/news/formal-talks-public-sector-pay-34782133",
+      "image_url": "https://i2-prod.dublinlive.ie/article34762280.ece/ALTERNATES/s1200d/0_01M4WSTG549DDBMGTFDR4E1R0H.jpg",
+      "scraped_at": "2026-10-18T17:52:04.111Z"
+    },
+    {
+      "headline": "Social welfare payment date shakeup in the coming days",
+      "content": "SOCIAL WELFARE PAYMENT CHAOS: BANK HOLIDAY SHAKEDOWN LEAVES RECIPIENTS IN LIMBO\n\nIn a stark reminder of the creaking social welfare system, recipients are being forced to navigate a payment date shakeup due to the upcoming October bank holiday on Monday, October 26. As the Leinster House elites enjoy their extra day off, hard-pressed families will have to contend with earlier-than-expected payments, with some set to arrive as early as Friday, October 23 or Saturday, October 24. The Department of Social Protection has finally gotten around to issuing a statement, confirming that payments due on the bank holiday Monday will be paid on Friday, October 23 instead. Meanwhile, Intreo Centres and Branch Offices will be closed on the bank holiday, leaving vulnerable citizens to fend for themselves. This chaotic arrangement will apply to every bank holiday this year, with the remaining dates conveniently listed for those trying to make ends meet. And in a stark example of bureaucratic inefficiency, Child Benefit payments will sail through unaffected, as they are distributed on the first Tuesday of each month when all Intreo centres and branch offices are miraculously open for business. As the Civil Service gravy train rumbles on, working-class communities are left to pick up the pieces, wondering why their payments can't be processed with a bit more common sense and respect for their daily struggles.",
+      "url": "https://www.dublinlive.ie/news/social-welfare-payment-date-shakeup-34782068",
+      "image_url": "https://i2-prod.dublinlive.ie/article28725521.ece/ALTERNATES/s1200d/0_money.jpg",
+      "scraped_at": "2026-10-18T17:52:23.893Z"
     }
   ]
 }
