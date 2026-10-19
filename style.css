@@ -1,15 +1,12 @@
-/* 🚨 AUTHENTIC GUARDIAN BROADSHEET SINGLE-FAMILY FONT DECLARATIONS */
+/* 📋 www.OnlineWebFonts.Com LICENSE REQUIREMENT CREDIT: 
+   Font made from http://onlinewebfonts.com is licensed by CC BY 4.0 */
+
 @font-face {
-  font-family: 'GH Guardian Headline';
-  src: url('https://guim.co.uk') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'GH Guardian Headline';
-  src: url('https://guim.co.uk') format('woff2');
-  font-weight: 700;
+  font-family: "GH Guardian Headline Medium";
+  src: url("https://onlinewebfonts.com") format("woff2"),
+       url("https://onlinewebfonts.com") format("woff"),
+       url("https://onlinewebfonts.com") format("truetype");
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
@@ -22,7 +19,7 @@
   --muted: #666666;
   --hairline: #DCDCDC;
   --pillar-tabloid: #7d00b3;
-  --serif: 'GH Guardian Headline', Georgia, serif;
+  --serif: "GH Guardian Headline Medium", Georgia, serif;
   --sans: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
 }
 
@@ -46,7 +43,7 @@ a:hover { text-decoration: underline; }
 }
 .logo {
   font-family: var(--serif);
-  font-weight: 300 !important;
+  font-weight: normal !important;
   font-size: clamp(3.4rem, 10vw, 4.6rem);
   line-height: 0.92;
   letter-spacing: -1.8px;
@@ -64,7 +61,7 @@ a:hover { text-decoration: underline; }
 .kick-title {
   display: block;
   font-family: var(--serif);
-  font-weight: 700 !important;
+  font-weight: normal !important;
   font-size: 1.6rem;
   line-height: 1.1;
   letter-spacing: -0.4px;
@@ -100,20 +97,19 @@ a:hover { text-decoration: underline; }
 .card-media { margin: 2px 0 0; }
 .card-media img { display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover; background: var(--hairline); }
 
-/* 🚨 FIXED BROADSHEET TYPOGRAPHY RESET - BYPASSING SERVER BLOCKS */
+/* 🚨 AUTHENTIC BROADFORM TYPOGRAPHY COMPACTION OVERWRITE */
 .card-headline, 
 .card-headline h2, 
 .card-headline a, 
 .card-headline h2 a {
-  /* Switched to highly optimized broadsheet alternatives with clear fallback styling */
-  font-family: "Times New Roman", Times, Georgia, serif !important;
-  font-weight: 300 !important;              /* Renders beautifully on modern font engines */
-  font-size: 26px !important;                 /* Calibrated slightly downward to match the top scale */
-  line-height: 1.12 !important;              /* Compact proportional line split */
-  letter-spacing: -0.03em !important;        /* Maintains your sharp kerning compression */
-  color: #121212 !important;                 /* True Off-Black Broadside Ink */
+  font-family: var(--serif) !important;
+  font-weight: normal !important;             /* Aligned to the custom imported face */
+  font-size: 25px !important;                 /* Finely tuned scale bounding matching your screenshot */
+  line-height: 1.12 !important;               /* Ultra-tight broadsheet line leading */
+  letter-spacing: -0.035em !important;        /* Crisp, snug word tracking compression */
+  color: #121212 !important;                  /* True rgb(18,18,18) Broadside Ink */
   
-  /* Universal Engine Anti-Aliasing Smoothers */
+  /* Firefox Gecko Anti-Aliasing Enforcers */
   text-rendering: optimizeLegibility !important;
   -moz-osx-font-smoothing: grayscale !important;
 }
@@ -123,15 +119,13 @@ a:hover { text-decoration: underline; }
 .card:first-child .card-headline h2, 
 .card:first-child .card-headline a, 
 .card:first-child .card-headline h2 a {
-  font-size: 38px !important;                 
-  line-height: 1.08 !important;              
-  letter-spacing: -0.04em !important;        
-  font-weight: 300 !important;                 
+  font-size: 36px !important;                 /* Scaled lead heading */
+  line-height: 1.08 !important;              /* Even tighter leading ratio for large display */
+  letter-spacing: -0.045em !important;        /* Increased negative crunch for display size */
 }
 
-
 .sidebar-lane { flex: 0 0 320px; width: 320px; border-top: 1px solid var(--hairline); }
-.sidebar-lane .card-headline, .sidebar-lane .card-headline a { font-size: 1.35rem !important; letter-spacing: -0.3px !important; }
+.sidebar-lane .card-headline, .sidebar-lane .card-headline a { font-size: 21px !important; letter-spacing: -0.02em !important; }
 .card-body { font-family: var(--sans); font-size: 0.94rem; line-height: 1.45; color: var(--charcoal); }
 .empty { padding: 40px 0; color: var(--muted); }
 
