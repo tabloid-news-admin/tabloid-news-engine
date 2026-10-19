@@ -100,19 +100,20 @@ a:hover { text-decoration: underline; }
 .card-media { margin: 2px 0 0; }
 .card-media img { display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover; background: var(--hairline); }
 
-/* 🚨 THE 100% TRUE BROADFORM GRAPHIC DESIGN DUPLICATE OVERWRITE */
+/* 🚨 FIXED BROADSHEET TYPOGRAPHY RESET - BYPASSING SERVER BLOCKS */
 .card-headline, 
 .card-headline h2, 
 .card-headline a, 
 .card-headline h2 a {
-  font-family: "GH Guardian Headline", Georgia, serif !important;
-  font-weight: 300 !important;              /* ◄— DROPPED TO 300 LIGHT WEIGHT TO MATCH THE TOP IMAGE */
-  font-size: 28px !important;                 /* Main card headline scale */
-  line-height: 1.08 !important;              /* ◄— CONDENSED LINE GAP RATIO TO CLUSTER TEXT LOGICALLY */
-  letter-spacing: -0.04em !important;        /* ◄— SNUG CHARACTER COMPRESSION OVERRIDE */
-  color: #121212 !important;                 /* True Off-Black Ink */
+  /* Switched to highly optimized broadsheet alternatives with clear fallback styling */
+  font-family: "Times New Roman", Times, Georgia, serif !important;
+  font-weight: 300 !important;              /* Renders beautifully on modern font engines */
+  font-size: 26px !important;                 /* Calibrated slightly downward to match the top scale */
+  line-height: 1.12 !important;              /* Compact proportional line split */
+  letter-spacing: -0.03em !important;        /* Maintains your sharp kerning compression */
+  color: #121212 !important;                 /* True Off-Black Broadside Ink */
   
-  /* Firefox Gecko Anti-Aliasing Enforcers */
+  /* Universal Engine Anti-Aliasing Smoothers */
   text-rendering: optimizeLegibility !important;
   -moz-osx-font-smoothing: grayscale !important;
 }
@@ -122,10 +123,10 @@ a:hover { text-decoration: underline; }
 .card:first-child .card-headline h2, 
 .card:first-child .card-headline a, 
 .card:first-child .card-headline h2 a {
-  font-size: 40px !important;                 /* Lead story text display size */
-  line-height: 1.05 !important;              /* Even tighter leading ratio for massive letters */
-  letter-spacing: -0.05em !important;        /* Aggressive letter crunch for large titles */
-  font-weight: 300 !important;
+  font-size: 38px !important;                 
+  line-height: 1.08 !important;              
+  letter-spacing: -0.04em !important;        
+  font-weight: 300 !important;                 
 }
 
 
