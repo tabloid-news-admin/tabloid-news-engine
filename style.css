@@ -3,9 +3,9 @@
 
 @font-face {
   font-family: "GH Guardian Headline Medium";
-  src: url("https://onlinewebfonts.com") format("woff2"),
-       url("https://onlinewebfonts.com") format("woff"),
-       url("https://onlinewebfonts.com") format("truetype");
+  src: url("https://db.onlinewebfonts.com/t/8ca7d107ddfa5a63a38eae311224795b.woff2") format("woff2"),
+       url("https://db.onlinewebfonts.com/t/8ca7d107ddfa5a63a38eae311224795b.woff") format("woff"),
+       url("https://db.onlinewebfonts.com/t/8ca7d107ddfa5a63a38eae311224795b.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
