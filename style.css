@@ -100,23 +100,21 @@ a:hover { text-decoration: underline; }
 .card-media { margin: 2px 0 0; }
 .card-media img { display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover; background: var(--hairline); }
 
-/* 🚨 TRUE BROADFORM TYPOGRAPHY MIGRATION ALIGNED TO THE VISIBLE PAPER */
+/* 🚨 THE 100% TRUE BROADFORM GRAPHIC DESIGN DUPLICATE OVERWRITE */
 .card-headline, 
 .card-headline h2, 
 .card-headline a, 
 .card-headline h2 a {
-  font-family: var(--serif) !important;
-  font-weight: 500 !important;
+  font-family: "GH Guardian Headline", Georgia, serif !important;
+  font-weight: 300 !important;              /* ◄— DROPPED TO 300 LIGHT WEIGHT TO MATCH THE TOP IMAGE */
+  font-size: 28px !important;                 /* Main card headline scale */
+  line-height: 1.08 !important;              /* ◄— CONDENSED LINE GAP RATIO TO CLUSTER TEXT LOGICALLY */
+  letter-spacing: -0.04em !important;        /* ◄— SNUG CHARACTER COMPRESSION OVERRIDE */
+  color: #121212 !important;                 /* True Off-Black Ink */
   
-  /* 📊 REAL DESKTOP HEADLINE SCALE: Upgraded from the base token to match the visible size */
-  font-size: 28px !important;                 /* Standard grid stories render at ~28px */
-  line-height: 32px !important;                 /* Snug line-height proportional to size */
-  letter-spacing: -0.01em !important;          /* Snug typography compression */
-  color: #121212 !important;                    /* Authentic Off-Black Broadside Ink */
-  
-  /* 🦊 UNIVERSAL ENGINE ANTI-ALIASING SMOOTHERS */
+  /* Firefox Gecko Anti-Aliasing Enforcers */
   text-rendering: optimizeLegibility !important;
-  -moz-osx-font-smoothing: grayscale !important; /* Forces premium rendering inside Firefox */
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
 /* The Big Lead Story Card Typography Compactor */
@@ -124,10 +122,10 @@ a:hover { text-decoration: underline; }
 .card:first-child .card-headline h2, 
 .card:first-child .card-headline a, 
 .card:first-child .card-headline h2 a {
-  font-size: 42px !important;                 /* Lead stories render at a massive ~42px */
-  line-height: 44px !important;                 /* Ultra-tight leading ratio for large display */
-  letter-spacing: -0.02em !important;          /* Aggressive crunch for massive titles */
-  font-weight: 300 !important;                 /* Elegant light weight layout scale */
+  font-size: 40px !important;                 /* Lead story text display size */
+  line-height: 1.05 !important;              /* Even tighter leading ratio for massive letters */
+  letter-spacing: -0.05em !important;        /* Aggressive letter crunch for large titles */
+  font-weight: 300 !important;
 }
 
 
