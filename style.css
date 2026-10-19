@@ -100,20 +100,32 @@ a:hover { text-decoration: underline; }
 .card-media { margin: 2px 0 0; }
 .card-media img { display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover; background: var(--hairline); }
 
-/* 🚨 RE-RESETTING ALL INTERFERING USER-AGENT WEIGHT OVERRIDES */
-.card-headline, .card-headline h2, .card-headline a, .card-headline h2 a {
+/* 🚨 AUTHENTIC GUARDIAN BROADSHEET MICRO-TYPOGRAPHY RESET OVERWRITE */
+.card-headline, 
+.card-headline h2, 
+.card-headline a, 
+.card-headline h2 a {
   font-family: var(--serif) !important;
-  font-weight: 300 !important;
+  font-weight: 500 !important;              /* Aligned to Guardian's 500 weight payload */
   font-size: 1.45rem !important;
-  line-height: 1.15 !important;
-  letter-spacing: -0.4px !important;
-  color: var(--ink) !important;
+  line-height: 1.15 !important;              /* Clean 19.55px proportional line split */
+  letter-spacing: -0.02em !important;        /* Snug word tracking compression */
+  color: #121212 !important;                 /* True rgb(18,18,18) Off-Black Ink */
+  text-rendering: optimizelegibility !important;
+  -webkit-font-smoothing: antialiased !important;
 }
-.card:first-child .card-headline, .card:first-child .card-headline h2, .card:first-child .card-headline a, .card:first-child .card-headline h2 a {
+
+/* The Big Lead Story Card Typography Compactor */
+.card:first-child .card-headline, 
+.card:first-child .card-headline h2, 
+.card:first-child .card-headline a, 
+.card:first-child .card-headline h2 a {
   font-size: 2.2rem !important;
-  line-height: 1.1 !important;
-  letter-spacing: -0.8px !important;
+  line-height: 1.12 !important;              /* Even tighter for massive display text */
+  letter-spacing: -0.03em !important;        /* Increased negative crunch for large titles */
+  font-weight: 300 !important;              /* Light weight signature scale */
 }
+
 
 .sidebar-lane { flex: 0 0 320px; width: 320px; border-top: 1px solid var(--hairline); }
 .sidebar-lane .card-headline, .sidebar-lane .card-headline a { font-size: 1.35rem !important; letter-spacing: -0.3px !important; }
